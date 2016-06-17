@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:weightSum="1000">
+
+        <RelativeLayout
+            android:id="@+id/mainlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="700">
+            <ImageView
+                android:id="@+id/iv_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+
+                android:scaleType="fitStart"
+                />
+
+            <com.munon.turboimageview.TurboImageView
+                android:id="@+id/turboImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="150">
+            <Button
+                android:id="@+id/removeAllButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="공유하기"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                />
+
+            <Button
+                android:id="@+id/btn_addgif"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="장면 추가"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                />
+
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="저장"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="150">
+            <Button
+                android:id="@+id/flipButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="이미지 좌우반전"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                />
+
+            <Button
+                android:id="@+id/btn_addfirst"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="첫번째 장면"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                />
+
+            <Button
+                android:id="@+id/btn_addsecond"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="두번째 장면"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
