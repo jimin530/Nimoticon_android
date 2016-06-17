@@ -69,6 +69,7 @@ public class CameraActivity extends Activity {
 		FrameLayout frame = (FrameLayout) findViewById(R.id.preview);
 		frame.addView(preview);
 		preview.setKeepScreenOn(true);
+		setCameraView();
 		fotoButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -93,15 +94,84 @@ public class CameraActivity extends Activity {
 				//Toast.makeText(getApplicationContext(), "SUCCESS!", Toast.LENGTH_LONG).show();
 				//Intent i = new Intent(Action.ACTION_MULTIPLE_PICK);
                 //startActivityForResult(i, 200);
-				Intent i = new Intent(getApplicationContext(), SelectPhotoActivity.class);
+				/*Intent i = new Intent(getApplicationContext(), SelectPhotoActivity.class);
 				startActivity(i);
 
-				finish();
+				finish();*/
+				setCameraView2();
 			}
 		});
 	}
 
+	public void setCameraView()
+	{
+		if(camera==null){
+			camera = Camera.open(CameraInfo.CAMERA_FACING_FRONT);
+			camera.startPreview();
+			camera.setErrorCallback(new ErrorCallback() {
+				public void onError(int error, Camera mcamera) {
+
+					camera.release();
+					camera = Camera.open(CameraInfo.CAMERA_FACING_FRONT);
+					Log.d("Camera died", "error camera");
+
+				}
+			});
+		}
+		if (camera != null) {
+			if (Build.VERSION.SDK_INT >= 14)
+				setCameraDisplayOrientation(context, CameraInfo.CAMERA_FACING_FRONT, camera);
+
+			//camera = camera.open(CameraInfo.CAMERA_FACING_FRONT);
+			//camera.setDisplayOrientation(90);
+			//camera = camera.open(CameraInfo.CAMERA_FACING_BACK);
+
+			preview.setCamera(camera);
+		}
+	}
+
+	public void setCameraView2()
+	{
+		if (camera != null) {
+			camera.stopPreview(); // stop preview
+			camera.release(); // release previous camera
+			camera = null;
+		}
+
+		if(camera==null){
+			camera = Camera.open(CameraInfo.CAMERA_FACING_BACK);
+			camera.startPreview();
+			camera.setErrorCallback(new ErrorCallback() {
+				public void onError(int error, Camera mcamera) {
+
+					camera.release();
+					camera = Camera.open(CameraInfo.CAMERA_FACING_BACK);
+					Log.d("Camera died", "error camera");
+
+				}
+			});
+		}
+		if (camera != null) {
+			if (Build.VERSION.SDK_INT >= 14)
+				setCameraDisplayOrientation(context, CameraInfo.CAMERA_FACING_BACK, camera);
+
+			//camera = camera.open(CameraInfo.CAMERA_FACING_FRONT);
+			//camera.setDisplayOrientation(90);
+			//camera = camera.open(CameraInfo.CAMERA_FACING_BACK);
+
+			preview.setCamera(camera);
+		}
+	}
 	@Override
+	protected void onPause() {
+		super.onPause();
+		if (camera != null) {
+			camera.release(); // release the camera for other applications
+			camera = null;
+		}
+	}
+
+	/*@Override
 	protected void onResume() {
 		super.onResume();
 		// TODO Auto-generated method stub
@@ -128,7 +198,7 @@ public class CameraActivity extends Activity {
 
 			preview.setCamera(camera);
 		}
-	}
+	}*/
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
