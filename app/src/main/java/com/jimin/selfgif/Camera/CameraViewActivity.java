@@ -24,6 +24,9 @@ import android.widget.Toast;
 import com.jimin.selfgif.CropActivity;
 import com.jimin.selfgif.R;
 import com.jimin.selfgif.SelectActivity;
+import com.jimin.selfgif.SelectGifActivity;
+import com.jimin.selfgif.SelectItemActivity;
+import com.jimin.selfgif.SelectPhotoActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,15 +45,53 @@ public class CameraViewActivity extends Activity implements OnClickListener {
 	private CameraPreview mPreview;
 	private FrameLayout mPreviewContainer;
 
+	ImageButton btn_emoticon;
+	ImageButton btn_album;
+	ImageButton btn_storage;
+	ImageButton btn_plus;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cameraview);
 
-		((ImageButton) findViewById(R.id.button_capture))
+		((ImageButton) findViewById(R.id.btn_capture))
 				.setOnClickListener(this);
-		((ImageButton) findViewById(R.id.button_switch_camera))
+		((ImageButton) findViewById(R.id.btn_transition))
 				.setOnClickListener(this);
+		btn_emoticon = (ImageButton) findViewById(R.id.btn_emoticon);
+		btn_emoticon.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), SelectItemActivity.class);
+				startActivity(i);
+				finish();
+			}
+		});
+		btn_album = (ImageButton) findViewById(R.id.btn_album);
+		btn_album.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), SelectPhotoActivity.class);
+				startActivity(i);
+				finish();
+			}
+		});
+		btn_storage = (ImageButton) findViewById(R.id.btn_storage);
+		btn_storage.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), SelectGifActivity.class);
+				startActivity(i);
+				finish();
+			}
+		});
+		btn_plus = (ImageButton) findViewById(R.id.btn_plus);
+		btn_plus.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+			}
+		});
 
 		mPreviewContainer = (FrameLayout) findViewById(R.id.camera_preview);
 
@@ -59,7 +100,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
 			return;
 		}
 
-		mCurrentCamera = CameraInfo.CAMERA_FACING_BACK;
+		mCurrentCamera = CameraInfo.CAMERA_FACING_FRONT;
 
 		// Create an instance of Camera
 		mCamera = getCameraInstance(mCurrentCamera);
@@ -224,7 +265,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
 			SelectActivity.now_take_photoroot = SelectActivity.basicsavephotoroot+SelectActivity.now_take_photoname+".jpg";
 			startActivity(new Intent(getApplicationContext(), CropActivity.class));
 
-			finish();
+			//finish();
 		}
 	};
 
@@ -246,13 +287,19 @@ public class CameraViewActivity extends Activity implements OnClickListener {
 			mCamera = null;
 		}
 	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+		// TODO Auto-generated method stub
+		//initPreview();
+	}
 
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
-		if (id == R.id.button_switch_camera) {
+		if (id == R.id.btn_transition) {
 			switchCamera();
-		} else if (id == R.id.button_capture) {
+		} else if (id == R.id.btn_capture) {
 			captureImage();
 		}
 

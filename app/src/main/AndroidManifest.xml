@@ -90,7 +90,8 @@
 
         <activity
             android:name=".Camera.CameraViewActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"/>
 
     </application>
 

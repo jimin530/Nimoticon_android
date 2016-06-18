@@ -44,7 +44,10 @@ public class PopupGifActivity extends Activity {
                 SelectActivity.click_gifscene1 = SelectActivity.first_scene_number + 2*(SelectActivity.click_gifresource-SelectActivity.first_resource_number);
                 SelectActivity.click_gifscene2 = SelectActivity.click_gifscene1+1;
 
-                Intent i = new Intent(PopupGifActivity.this, CameraViewActivity.class);
+                /*Intent i = new Intent(PopupGifActivity.this, CameraViewActivity.class);
+                startActivity(i);*/
+
+                Intent i = new Intent(getApplicationContext(), CameraViewActivity.class);
                 startActivity(i);
 
                 finish();
