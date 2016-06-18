@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
-import com.jimin.selfgif.CameraView.CameraActivity;
 import com.jimin.selfgif.SaveGif.AnimatedGifImageView;
 import com.jimin.selfgif.SaveGif.AnimatedGifImageView.TYPE;
 

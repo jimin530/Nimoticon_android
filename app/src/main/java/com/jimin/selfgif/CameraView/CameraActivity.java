@@ -1,3 +1,4 @@
+/*
 package com.jimin.selfgif.CameraView;
 
 
@@ -94,10 +95,11 @@ public class CameraActivity extends Activity {
 				//Toast.makeText(getApplicationContext(), "SUCCESS!", Toast.LENGTH_LONG).show();
 				//Intent i = new Intent(Action.ACTION_MULTIPLE_PICK);
                 //startActivityForResult(i, 200);
-				/*Intent i = new Intent(getApplicationContext(), SelectPhotoActivity.class);
+Intent i = new Intent(getApplicationContext(), SelectPhotoActivity.class);
 				startActivity(i);
 
-				finish();*/
+				finish();
+
 				setCameraView2();
 			}
 		});
@@ -120,7 +122,7 @@ public class CameraActivity extends Activity {
 		}
 		if (camera != null) {
 			if (Build.VERSION.SDK_INT >= 14)
-				setCameraDisplayOrientation(context, CameraInfo.CAMERA_FACING_FRONT, camera);
+				//setCameraDisplayOrientation(context, CameraInfo.CAMERA_FACING_FRONT, camera);
 
 			//camera = camera.open(CameraInfo.CAMERA_FACING_FRONT);
 			//camera.setDisplayOrientation(90);
@@ -135,7 +137,6 @@ public class CameraActivity extends Activity {
 		if (camera != null) {
 			camera.stopPreview(); // stop preview
 			camera.release(); // release previous camera
-			camera = null;
 		}
 
 		if(camera==null){
@@ -153,7 +154,7 @@ public class CameraActivity extends Activity {
 		}
 		if (camera != null) {
 			if (Build.VERSION.SDK_INT >= 14)
-				setCameraDisplayOrientation(context, CameraInfo.CAMERA_FACING_BACK, camera);
+				//setCameraDisplayOrientation(context, CameraInfo.CAMERA_FACING_BACK, camera);
 
 			//camera = camera.open(CameraInfo.CAMERA_FACING_FRONT);
 			//camera.setDisplayOrientation(90);
@@ -171,7 +172,7 @@ public class CameraActivity extends Activity {
 		}
 	}
 
-	/*@Override
+@Override
 	protected void onResume() {
 		super.onResume();
 		// TODO Auto-generated method stub
@@ -198,7 +199,8 @@ public class CameraActivity extends Activity {
 
 			preview.setCamera(camera);
 		}
-	}*/
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -385,3 +387,4 @@ public class CameraActivity extends Activity {
 	}
 
 }
+*/

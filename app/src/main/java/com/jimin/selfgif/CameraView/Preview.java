@@ -1,3 +1,4 @@
+/*
 package com.jimin.selfgif.CameraView;
 
 import android.content.Context;
@@ -51,7 +52,7 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
     			// set Camera parameters
     			mCamera.setParameters(params);
     		}
-    		
+
     	}
     }
 
@@ -167,3 +168,4 @@ class Preview extends ViewGroup implements SurfaceHolder.Callback {
     }
 
 }
+*/

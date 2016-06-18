@@ -1,35 +1,25 @@
 package com.jimin.selfgif;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import java.io.File;
-import java.io.FileOutputStream;
+
 import java.util.ArrayList;
-import android.annotation.SuppressLint;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.net.Uri;
-import android.os.Environment;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import com.jimin.selfgif.CameraView.CameraActivity;
-import com.jimin.selfgif.Gallery.Action;
+import com.jimin.selfgif.Camera.CameraViewActivity;
 import com.jimin.selfgif.Gallery.CustomGallery;
-import com.jimin.selfgif.Gallery.CustomGalleryActivity;
 import com.jimin.selfgif.Gallery.GalleryAdapter;
-import com.jimin.selfgif.SaveGif.AnimatedGifMaker;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -122,7 +112,7 @@ public class MainActivity extends Activity {
 //                startActivityForResult(i, 200);
 //                Intent i = new Intent(MainActivity.this, CustomGalleryActivity.class);
 //                startActivity(i);
-                Intent i = new Intent(MainActivity.this, CameraActivity.class);
+                Intent i = new Intent(MainActivity.this, CameraViewActivity.class);
                 startActivity(i);
             }
         });

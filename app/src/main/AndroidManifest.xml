@@ -87,8 +87,9 @@
             android:taskAffinity="com.jimin.selfgif.popupm"
             />
 
+
         <activity
-            android:name=".CameraView.CameraActivity"
+            android:name=".Camera.CameraViewActivity"
             android:launchMode="singleInstance" />
 
     </application>
