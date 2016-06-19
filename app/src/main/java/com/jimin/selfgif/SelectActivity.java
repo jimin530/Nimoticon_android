@@ -38,6 +38,8 @@ public class SelectActivity extends Activity {
 
     public static Bitmap cropimage;
 
+    public static boolean fromcamera = true;
+
     Button btn_makepage;
     Button btn_allnimoticon;
 

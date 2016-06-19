@@ -18,7 +18,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-
                 android:scaleType="fitStart"
                 />
 
@@ -38,6 +37,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="공유하기"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                />
+
+            <Button
+                android:id="@+id/btn_nimoticon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="니모티콘"
                 android:layout_weight="1"
                 android:singleLine="true"
                 android:ellipsize="middle"
@@ -72,7 +81,17 @@
                 android:id="@+id/flipButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="이미지 좌우반전"
+                android:text="좌우반전"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                />
+
+            <Button
+                android:id="@+id/btn_selectemoticon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="이모티콘"
                 android:layout_weight="1"
                 android:singleLine="true"
                 android:ellipsize="middle"

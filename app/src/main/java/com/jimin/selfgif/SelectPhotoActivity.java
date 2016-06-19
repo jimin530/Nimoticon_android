@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.jimin.selfgif.Camera.CameraViewActivity;
 import com.jimin.selfgif.Gallery.CustomGallery;
 import com.jimin.selfgif.Gallery.GalleryAdapter;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
@@ -220,6 +222,15 @@ public class SelectPhotoActivity extends Activity {
 		// show newest photo at beginning of the list
 		Collections.reverse(galleryList);
 		return galleryList;
+	}
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) { // 백 버튼
+			Intent i = new Intent(getApplicationContext(), CameraViewActivity.class);
+			startActivity(i);
+			finish();
+		}
+		return true;
 	}
 
 }

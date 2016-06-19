@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -15,6 +16,8 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.jimin.selfgif.Camera.CameraViewActivity;
 
 public class SelectItemActivity extends AppCompatActivity {
 
@@ -96,5 +99,15 @@ public class SelectItemActivity extends AppCompatActivity {
             imageView.setImageResource(mThumbIds[position]);
             return imageView;
         }
+
     }
+    /*@Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) { // 백 버튼
+            Intent i = new Intent(getApplicationContext(), CameraViewActivity.class);
+            startActivity(i);
+            finish();
+        }
+        return true;
+    }*/
 }

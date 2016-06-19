@@ -63,9 +63,10 @@ public class CameraViewActivity extends Activity implements OnClickListener {
 		btn_emoticon.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				SelectActivity.fromcamera = true;
 				Intent i = new Intent(getApplicationContext(), SelectItemActivity.class);
 				startActivity(i);
-				finish();
+				//finish();
 			}
 		});
 		btn_album = (ImageButton) findViewById(R.id.btn_album);
@@ -283,6 +284,8 @@ public class CameraViewActivity extends Activity implements OnClickListener {
 	protected void onPause() {
 		super.onPause();
 		if (mCamera != null) {
+			//mCamera.setPreviewCallback(null);
+			//mPreview.getHolder().removeCallback(mPreview);
 			mCamera.release(); // release the camera for other applications
 			mCamera = null;
 		}
@@ -291,8 +294,26 @@ public class CameraViewActivity extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
 		// TODO Auto-generated method stub
+		if (mCamera != null) {
+			mCamera.stopPreview(); // stop preview
+			mCamera.release(); // release previous camera
+		}
+		mCamera = getCameraInstance(mCurrentCamera);
+
+		if (mCamera == null)
+			return;
+
+		initPreview();
 		//initPreview();
 	}
+
+	/*@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if (mCamera != null) {
+			mCamera.release(); // release the camera for other applications
+		}
+	}*/
 
 	@Override
 	public void onClick(View v) {

@@ -47,9 +47,10 @@ public class PopupGifActivity extends Activity {
                 /*Intent i = new Intent(PopupGifActivity.this, CameraViewActivity.class);
                 startActivity(i);*/
 
-                Intent i = new Intent(getApplicationContext(), CameraViewActivity.class);
-                startActivity(i);
-
+                if(SelectActivity.fromcamera) {
+                    Intent i = new Intent(getApplicationContext(), CameraViewActivity.class);
+                    startActivity(i);
+                }
                 finish();
             }
         });

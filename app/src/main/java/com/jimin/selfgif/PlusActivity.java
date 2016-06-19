@@ -162,7 +162,22 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 //startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
-
+        findViewById(R.id.btn_selectemoticon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SelectActivity.fromcamera = false;
+                Intent i = new Intent(getApplicationContext(), SelectItemActivity.class);
+                startActivity(i);
+            }
+        });
+        findViewById(R.id.btn_nimoticon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SelectGifActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
     }
 
