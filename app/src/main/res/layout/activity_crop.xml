@@ -20,7 +20,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="900">
+        android:layout_weight="700">
         <view
             android:id="@+id/cropper_drawing_view"
             class="com.maker.outlinecropperlib.Views.CropperDrawingView"
@@ -30,6 +30,22 @@
             android:layout_centerVertical="true" />
     </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="200">
+            <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/gv_shotlist"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:columnWidth="90dp"
+                android:gravity="center"
+                android:horizontalSpacing="10dp"
+                android:numColumns="auto_fit"
+                android:stretchMode="spacingWidth"
+                android:verticalSpacing="10dp" />
+        </LinearLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -38,8 +54,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Crop"
+            android:text="자르기"
             android:id="@+id/btn_crop"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="합성"
+            android:id="@+id/btn_goplus"/>
     </LinearLayout>
 
     </LinearLayout>

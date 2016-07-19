@@ -13,6 +13,9 @@ import android.widget.Button;
 import com.jimin.selfgif.SaveGif.AnimatedGifImageView;
 import com.jimin.selfgif.SaveGif.AnimatedGifImageView.TYPE;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class SelectActivity extends Activity {
     public static int count_gif=4;
@@ -35,8 +38,10 @@ public class SelectActivity extends Activity {
     public static String now_made_gifroot;
     public static String now_take_photoname;
     public static String now_take_photoroot;
+    public static ArrayList<String> take_photoroot = new ArrayList<>();
 
     public static Bitmap cropimage;
+    public static ArrayList<Bitmap> crop_list = new ArrayList<>();
 
     public static boolean fromcamera = true;
 

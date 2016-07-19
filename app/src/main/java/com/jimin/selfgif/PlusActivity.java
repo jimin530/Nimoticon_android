@@ -17,8 +17,13 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -26,6 +31,8 @@ import android.widget.Toast;
 
 import com.jimin.selfgif.SaveGif.AnimatedGifMaker;
 import com.jimin.selfgif.SaveGif.SaveStorage;
+import com.maker.outlinecropperlib.OutlineCropper;
+import com.maker.outlinecropperlib.Views.CropperDrawingView;
 import com.munon.turboimageview.MultiTouchObject;
 import com.munon.turboimageview.TurboImageView;
 import com.munon.turboimageview.TurboImageViewListener;
@@ -50,19 +57,32 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
     public ArrayList<Bitmap> bitmaps= new ArrayList<Bitmap>(); //Add your bitmaps from internal or external storage.
     SaveStorage savestorage = new SaveStorage();
 
-    String basicroot = Environment.getExternalStorageDirectory().toString() + "/GIFMaker/MyGif2.gif";
+    //String basicroot = Environment.getExternalStorageDirectory().toString() + "/GIFMaker/MyGif2.gif";
+
+    private CropperDrawingView cropperDrawingView;
+    private OutlineCropper outlineCropper;
+    private ProgressDialog pd;
+
+    DisplayMetrics mMetrics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plus);
 
+        GridView gridview = (GridView) findViewById(R.id.gv_croplist);
+        gridview.setAdapter(new PlusActivity.ImageAdapter(this));
+        gridview.setOnItemClickListener(gridviewOnItemClickListener);
+
+        mMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
+
         turboImageView = (TurboImageView) findViewById(R.id.turboImageView);
         turboImageView.setListener(this);
 
         iv_background = (ImageView) findViewById(R.id.iv_background);
 
-        turboImageView.addObject(PlusActivity.this, SelectActivity.cropimage);
+        turboImageView.addObject(PlusActivity.this, SelectActivity.crop_list.get(0));
         //turboImageView.addSetObject(PlusActivity.this, SelectActivity.cropimage, (float)547.47626, (float)634.906);
         //iv_background.setImageDrawable(getResources().getDrawable(R.drawable.gif_one));
 
@@ -178,6 +198,54 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 finish();
             }
         });
+
+    }
+
+    private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
+
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                long arg3) {
+
+        }
+    };
+
+    public class ImageAdapter extends BaseAdapter {
+        private Context mContext;
+
+        public ImageAdapter(Context c) {
+            mContext = c;
+        }
+
+        public int getCount() {
+            return SelectActivity.crop_list.size();
+        }
+
+        public Object getItem(int position) {
+            return SelectActivity.crop_list.get(position);
+        }
+
+        public long getItemId(int position) {
+            return position;
+        }
+
+        // create a new ImageView for each item referenced by the Adapter
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            int rowWidth = (mMetrics.widthPixels) / 4;
+
+            ImageView imageView;
+            if (convertView == null) {
+                imageView = new ImageView(mContext);
+                imageView.setLayoutParams(new GridView.LayoutParams(rowWidth,rowWidth));
+                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageView.setPadding(1, 1, 1, 1);
+            } else {
+                imageView = (ImageView) convertView;
+            }
+            Bitmap myBitmap = SelectActivity.crop_list.get(position);
+            imageView.setImageBitmap(myBitmap);
+            return imageView;
+        }
 
     }
 

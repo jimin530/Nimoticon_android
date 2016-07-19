@@ -21,20 +21,20 @@ public class CameraPreview extends SurfaceView implements
 	Size mPreviewSize;
 	List<Size> mSupportedPreviewSizes;
 
-	@SuppressWarnings("deprecation")
-	public CameraPreview(Context context, Camera camera) {
-		super(context);
-		mCamera = camera;
+		@SuppressWarnings("deprecation")
+		public CameraPreview(Context context, Camera camera) {
+			super(context);
+			mCamera = camera;
 
-		// Install a SurfaceHolder.Callback so we get notified when the
-		// underlying surface is created and destroyed.
-		mHolder = getHolder();
-		mHolder.addCallback(this);
-		// deprecated setting, but required on Android versions prior to 3.0
-		mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+			// Install a SurfaceHolder.Callback so we get notified when the
+			// underlying surface is created and destroyed.
+			mHolder = getHolder();
+			mHolder.addCallback(this);
+			// deprecated setting, but required on Android versions prior to 3.0
+			mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
-		mSupportedPreviewSizes = mCamera.getParameters()
-				.getSupportedPreviewSizes();
+			mSupportedPreviewSizes = mCamera.getParameters()
+					.getSupportedPreviewSizes();
 
 		setIfAutoFocusSupported();
 	}

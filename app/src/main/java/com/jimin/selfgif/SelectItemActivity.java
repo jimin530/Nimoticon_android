@@ -49,8 +49,7 @@ public class SelectItemActivity extends AppCompatActivity {
         mMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
     }
-    private GridView.OnItemClickListener gridviewOnItemClickListener
-            = new GridView.OnItemClickListener() {
+    private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
 
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                 long arg3) {
