@@ -60,6 +60,7 @@ public class CropActivity extends Activity {
                 finish();
             }
         });
+        btn_goplus.setEnabled(false);
 
         pd = new ProgressDialog(this);
         pd.setMessage("Cropping...");
@@ -83,7 +84,7 @@ public class CropActivity extends Activity {
                         if (cropResultBitmap != null) {
                             //SelectActivity.cropimage = cropResultBitmap;
                             SelectActivity.crop_list.add(cropResultBitmap);
-
+                            btn_goplus.setEnabled(true);
                             //startActivity(new Intent(getApplicationContext(), PlusActivity.class));
 
                             //finish();
@@ -117,9 +118,7 @@ public class CropActivity extends Activity {
 
     }
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
-
-        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                long arg3) {
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
             cropperDrawingView.setImageCrop(BitmapFactory.decodeFile(arg0.getAdapter().getItem(arg2).toString()));
         }
     };

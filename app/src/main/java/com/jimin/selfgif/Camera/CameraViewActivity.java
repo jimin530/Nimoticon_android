@@ -94,6 +94,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
 				startActivity(new Intent(getApplicationContext(), CropActivity.class));
 			}
 		});
+		btn_plus.setEnabled(false);
 
 		mPreviewContainer = (FrameLayout) findViewById(R.id.camera_preview);
 
@@ -264,6 +265,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
 			} catch (IOException e) {
 				Log.d(TAG, "Error accessing file: " + e.getMessage());
 			}
+			btn_plus.setEnabled(true);
 			SelectActivity.take_photoroot.add(SelectActivity.basicsavephotoroot+SelectActivity.now_take_photoname+".jpg");
 			//SelectActivity.now_take_photoroot = SelectActivity.basicsavephotoroot+SelectActivity.now_take_photoname+".jpg";
 			//startActivity(new Intent(getApplicationContext(), CropActivity.class));

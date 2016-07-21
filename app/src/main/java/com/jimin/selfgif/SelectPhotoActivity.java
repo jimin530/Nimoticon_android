@@ -99,18 +99,18 @@ public class SelectPhotoActivity extends Activity {
 		gridGallery.setOnScrollListener(listener);
 
 //		if (action.equalsIgnoreCase(Action.ACTION_MULTIPLE_PICK)) {
-//
-//			findViewById(R.id.llBottomContainer).setVisibility(View.VISIBLE);
-//			gridGallery.setOnItemClickListener(mItemMulClickListener);
-//			adapter.setMultiplePick(true);
-//
-//		} else if (action.equalsIgnoreCase(Action.ACTION_PICK)) {
+
+			findViewById(R.id.llBottomContainer).setVisibility(View.VISIBLE);
+			gridGallery.setOnItemClickListener(mItemMulClickListener);
+			adapter.setMultiplePick(true);
+
+		/*} else if (action.equalsIgnoreCase(Action.ACTION_PICK)) {
 
 			findViewById(R.id.llBottomContainer).setVisibility(View.GONE);
 			gridGallery.setOnItemClickListener(mItemSingleClickListener);
 			adapter.setMultiplePick(false);
 
-//		}
+		}*/
 
 		gridGallery.setAdapter(adapter);
 		imgNoMedia = (ImageView) findViewById(R.id.imgNoMedia);
@@ -152,13 +152,10 @@ public class SelectPhotoActivity extends Activity {
 		public void onClick(View v) {
 			ArrayList<CustomGallery> selected = adapter.getSelected();
 
-			String[] allPath = new String[selected.size()];
-			for (int i = 0; i < allPath.length; i++) {
-				allPath[i] = selected.get(i).sdcardPath;
+			for (int i = 0; i < selected.size(); i++) {
+				SelectActivity.take_photoroot.add(selected.get(i).sdcardPath);
 			}
-
-			Intent data = new Intent().putExtra("all_path", allPath);
-			setResult(RESULT_OK, data);
+			startActivity(new Intent(getApplicationContext(), CropActivity.class));
 			finish();
 
 		}

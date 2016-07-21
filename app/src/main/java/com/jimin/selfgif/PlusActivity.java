@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -49,6 +51,9 @@ import java.util.Date;
 public class PlusActivity extends Activity implements TurboImageViewListener {
     private static final String TAG = "SampleActivity";
 
+    Button btn_addcropped;
+    Button btn_deletecropped;
+
     private TurboImageView turboImageView;
     ImageView iv_background;
     String[] allPath = new String[2];
@@ -64,6 +69,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
     private ProgressDialog pd;
 
     DisplayMetrics mMetrics;
+    Bitmap selected_cropped = SelectActivity.crop_list.get(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +88,22 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
 
         iv_background = (ImageView) findViewById(R.id.iv_background);
 
-        turboImageView.addObject(PlusActivity.this, SelectActivity.crop_list.get(0));
+        btn_addcropped = (Button) findViewById(R.id.btn_addcropped);
+        btn_addcropped.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                turboImageView.addObject(PlusActivity.this, selected_cropped);
+            }
+        });
+        btn_deletecropped = (Button) findViewById(R.id.btn_deletecropped);
+        btn_deletecropped.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                turboImageView.removeSelectedObject();
+            }
+        });
+
+        //turboImageView.addObject(PlusActivity.this, SelectActivity.crop_list.get(0));
         //turboImageView.addSetObject(PlusActivity.this, SelectActivity.cropimage, (float)547.47626, (float)634.906);
         //iv_background.setImageDrawable(getResources().getDrawable(R.drawable.gif_one));
 
@@ -203,9 +224,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
 
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
 
-        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                long arg3) {
-
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            selected_cropped = (Bitmap)arg0.getAdapter().getItem(arg2);
         }
     };
 
@@ -243,6 +263,10 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 imageView = (ImageView) convertView;
             }
             Bitmap myBitmap = SelectActivity.crop_list.get(position);
+
+            Drawable d = new BitmapDrawable(getResources(), myBitmap);
+            Log.i("확인@@", d+"");
+
             imageView.setImageBitmap(myBitmap);
             return imageView;
         }
