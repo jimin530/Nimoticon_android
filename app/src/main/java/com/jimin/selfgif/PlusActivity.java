@@ -10,14 +10,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -27,14 +24,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.jimin.selfgif.SaveGif.AnimatedGifMaker;
-import com.jimin.selfgif.SaveGif.SaveStorage;
-import com.maker.outlinecropperlib.OutlineCropper;
-import com.maker.outlinecropperlib.Views.CropperDrawingView;
 import com.munon.turboimageview.MultiTouchObject;
 import com.munon.turboimageview.TurboImageView;
 import com.munon.turboimageview.TurboImageViewListener;
@@ -56,20 +49,11 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
 
     private TurboImageView turboImageView;
     ImageView iv_background;
-    String[] allPath = new String[2];
 
     ProgressDialog progressBar;
-    public ArrayList<Bitmap> bitmaps= new ArrayList<Bitmap>(); //Add your bitmaps from internal or external storage.
-    SaveStorage savestorage = new SaveStorage();
-
-    //String basicroot = Environment.getExternalStorageDirectory().toString() + "/GIFMaker/MyGif2.gif";
-
-    private CropperDrawingView cropperDrawingView;
-    private OutlineCropper outlineCropper;
-    private ProgressDialog pd;
-
+    public ArrayList<Bitmap> bitmaps = new ArrayList<Bitmap>(); //Add your bitmaps from internal or external storage.
     DisplayMetrics mMetrics;
-    Bitmap selected_cropped = SelectActivity.crop_list.get(0);
+    Bitmap selected_cropped = PathClass.crop_list.get(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,27 +87,6 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         });
 
-        //turboImageView.addObject(PlusActivity.this, SelectActivity.crop_list.get(0));
-        //turboImageView.addSetObject(PlusActivity.this, SelectActivity.cropimage, (float)547.47626, (float)634.906);
-        //iv_background.setImageDrawable(getResources().getDrawable(R.drawable.gif_one));
-
-
-//        findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //turboImageView.addObject(PlusActivity.this, getBitmapFromAsset(PlusActivity.this, "bitmaps/bitmap.png"));
-//                turboImageView.addObject(PlusActivity.this, CropActivity.cropimage);
-//            }
-//        });
-//
-//        findViewById(R.id.removeButton).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                boolean deleted = turboImageView.removeSelectedObject();
-//                Log.d(TAG, "deleted: " + deleted);
-//            }
-//        });
-//
         findViewById(R.id.removeAllButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,17 +95,10 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
                 shareIntent.setType("image/gif");
-                shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(SelectActivity.now_made_gifroot+".gif"));
+                shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(PathClass.now_made_gifroot + ".gif"));
                 startActivity(Intent.createChooser(shareIntent, "공유하기"));
             }
         });
-//
-//        findViewById(R.id.deselectButton).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                turboImageView.deselectAll();
-//            }
-//        });
 
         findViewById(R.id.flipButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,36 +110,22 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         findViewById(R.id.btn_addfirst).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //iv_background.setImageDrawable(getResources().getDrawable(R.drawable.gif_one));
-                //iv_background.setImageDrawable(getResources().getDrawable(R.drawable.image_4_1));
-                iv_background.setImageResource(SelectActivity.click_gifscene1);
+                iv_background.setImageResource(PathClass.click_gifscene1);
             }
         });
         findViewById(R.id.btn_addsecond).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //iv_background.setImageDrawable(getResources().getDrawable(R.drawable.gif_two));
-                //iv_background.setImageDrawable(getResources().getDrawable(R.drawable.image_4_2));
-                iv_background.setImageResource(SelectActivity.click_gifscene2);
+                iv_background.setImageResource(PathClass.click_gifscene2);
 
             }
         });
         findViewById(R.id.btn_addgif).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //iv_background.bringToFront();//맨앞으로오기@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                /*RelativeLayout view = (RelativeLayout)findViewById(R.id.mainlayout);
-                view.setDrawingCacheEnabled(true);
-                view.buildDrawingCache();
-                Bitmap bm = view.getDrawingCache();
-                bitmaps.add(bm);*/
                 Drawable d = getResources().getDrawable(R.drawable.gifimage_1);
-                RelativeLayout view = (RelativeLayout)findViewById(R.id.mainlayout);
-                //Log.i("확인",d.getIntrinsicWidth()+"@@@@@@"+d.getIntrinsicHeight());
-                //Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth(), d.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-                //Bitmap bitmap = Bitmap.createBitmap(1000, 1000, Bitmap.Config.ARGB_8888);
-                Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth()-120, d.getIntrinsicHeight()-120, Bitmap.Config.ARGB_8888);
-                //Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+                RelativeLayout view = (RelativeLayout) findViewById(R.id.mainlayout);
+                Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth() - 120, d.getIntrinsicHeight() - 120, Bitmap.Config.ARGB_8888);
                 Canvas canvas = new Canvas(bitmap);
                 view.draw(canvas);
                 bitmaps.add(bitmap);
@@ -192,21 +134,13 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*for (int i = 0; i < 2; i++) {
-                    allPath[i] = selected.get(i).sdcardPath;
-                }
-                Intent data = new Intent().putExtra("all_path", allPath);
-                setResult(RESULT_OK, data);
-                finish();*/
                 makeGif();
-                //savestorage.makeGif(bitmaps, getBaseContext());
-                //startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
         findViewById(R.id.btn_selectemoticon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SelectActivity.fromcamera = false;
+                PathClass.fromcamera = false;
                 Intent i = new Intent(getApplicationContext(), SelectItemActivity.class);
                 startActivity(i);
             }
@@ -225,7 +159,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
 
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-            selected_cropped = (Bitmap)arg0.getAdapter().getItem(arg2);
+            selected_cropped = (Bitmap) arg0.getAdapter().getItem(arg2);
         }
     };
 
@@ -237,11 +171,11 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         }
 
         public int getCount() {
-            return SelectActivity.crop_list.size();
+            return PathClass.crop_list.size();
         }
 
         public Object getItem(int position) {
-            return SelectActivity.crop_list.get(position);
+            return PathClass.crop_list.get(position);
         }
 
         public long getItemId(int position) {
@@ -256,16 +190,13 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             ImageView imageView;
             if (convertView == null) {
                 imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(rowWidth,rowWidth));
+                imageView.setLayoutParams(new GridView.LayoutParams(rowWidth, rowWidth));
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                 imageView.setPadding(1, 1, 1, 1);
             } else {
                 imageView = (ImageView) convertView;
             }
-            Bitmap myBitmap = SelectActivity.crop_list.get(position);
-
-            Drawable d = new BitmapDrawable(getResources(), myBitmap);
-            Log.i("확인@@", d+"");
+            Bitmap myBitmap = PathClass.crop_list.get(position);
 
             imageView.setImageBitmap(myBitmap);
             return imageView;
@@ -312,7 +243,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         Date date = new Date(now);
         SimpleDateFormat CurDateFormat = new SimpleDateFormat("MM_dd_HH_mm_ss");
 
-        String name = "Gif"+CurDateFormat.format(date);
+        String name = "Gif" + CurDateFormat.format(date);
         //Toast.makeText(this, "The .gifs is now saving. This will take ~3 sec per frame", Toast.LENGTH_LONG).show();
 
         progressBar = ProgressDialog.show(this, "Converting...", "~3 sec/frame", true, false);
@@ -325,22 +256,22 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 Toast.LENGTH_LONG).show();*/
     }
 
-    private class GifThread extends Thread{
+    private class GifThread extends Thread {
         private String name;
 
         public GifThread(String proj) { // ONLY WORKS AFTER SAVING
-            name=proj;
+            name = proj;
         }
 
         @Override
-        public void run(){
-            File myDir = new File(SelectActivity.basicroot + "SaveGif/");
-            if(!myDir.exists())
+        public void run() {
+            File myDir = new File(PathClass.basicroot + "SaveGif/");
+            if (!myDir.exists())
                 myDir.mkdirs();
             String fname = name;
-            SelectActivity.now_made_gifname = name;
+            PathClass.now_made_gifname = name;
             File file = new File(myDir, fname + ".gif");
-            if (file.exists()){
+            if (file.exists()) {
                 file.delete();
             }
             try {
@@ -362,13 +293,14 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
             handler.sendEmptyMessage(0);
         }
+
         @SuppressLint("HandlerLeak")
         private Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 progressBar.dismiss();
                 Toast.makeText(getApplicationContext(), "SUCCESS!", Toast.LENGTH_LONG).show();
-                SelectActivity.now_made_gifroot = SelectActivity.basicsavegifroot+SelectActivity.now_made_gifname;
+                PathClass.now_made_gifroot = PathClass.basicsavegifroot + PathClass.now_made_gifname;
             }
         };
     }

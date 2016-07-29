@@ -9,7 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/gifviewer" />
             <option value="$PROJECT_DIR$/outlinecropperlib" />
             <option value="$PROJECT_DIR$/turboimageview" />
           </set>
@@ -18,7 +17,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/gifviewer" />
             <option value="$PROJECT_DIR$/outlinecropperlib" />
             <option value="$PROJECT_DIR$/turboimageview" />
           </set>

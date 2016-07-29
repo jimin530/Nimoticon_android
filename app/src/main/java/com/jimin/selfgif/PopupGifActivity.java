@@ -3,7 +3,6 @@ package com.jimin.selfgif;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -24,14 +23,10 @@ public class PopupGifActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.popupgif_activity);
-        animatedGifImageView = ((AnimatedGifImageView)findViewById(R.id.animatedGifImageView));
+        animatedGifImageView = ((AnimatedGifImageView) findViewById(R.id.animatedGifImageView));
         try {
-            //animatedGifImageView.viewgif(clickroot, TYPE.FIT_CENTER);
-            //animatedGifImageView.setAnimatedGif(R.drawable.animated_gif, TYPE.FIT_CENTER);
-            animatedGifImageView.setAnimatedGif(SelectActivity.click_gifresource, TYPE.FIT_CENTER);
-        }
-        catch (Exception e)
-        {
+            animatedGifImageView.setAnimatedGif(PathClass.click_gifresource, TYPE.FIT_CENTER);
+        } catch (Exception e) {
 
         }
 
@@ -39,15 +34,11 @@ public class PopupGifActivity extends Activity {
         btn_selectimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent i = new Intent(PopupGifActivity.this, MainActivity.class);
 
-                SelectActivity.click_gifscene1 = SelectActivity.first_scene_number + 2*(SelectActivity.click_gifresource-SelectActivity.first_resource_number);
-                SelectActivity.click_gifscene2 = SelectActivity.click_gifscene1+1;
+                PathClass.click_gifscene1 = PathClass.first_scene_number + 2 * (PathClass.click_gifresource - PathClass.first_resource_number);
+                PathClass.click_gifscene2 = PathClass.click_gifscene1 + 1;
 
-                /*Intent i = new Intent(PopupGifActivity.this, CameraViewActivity.class);
-                startActivity(i);*/
-
-                if(SelectActivity.fromcamera) {
+                if (PathClass.fromcamera) {
                     Intent i = new Intent(getApplicationContext(), CameraViewActivity.class);
                     startActivity(i);
                 }

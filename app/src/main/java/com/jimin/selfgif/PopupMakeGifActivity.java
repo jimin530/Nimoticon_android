@@ -23,14 +23,10 @@ public class PopupMakeGifActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.popupmakegif_activity);
-        animatedGifImageView = ((AnimatedGifImageView)findViewById(R.id.animatedGifImageView));
+        animatedGifImageView = ((AnimatedGifImageView) findViewById(R.id.animatedGifImageView));
         try {
-            animatedGifImageView.viewgif(SelectActivity.click_makegifroot, TYPE.FIT_CENTER);
-            //animatedGifImageView.setAnimatedGif(R.drawable.animated_gif, TYPE.FIT_CENTER);
-            //animatedGifImageView.setAnimatedGif(SelectActivity.click_gifresource, TYPE.FIT_CENTER);
-        }
-        catch (Exception e)
-        {
+            animatedGifImageView.viewgif(PathClass.click_makegifroot, TYPE.FIT_CENTER);
+        } catch (Exception e) {
 
         }
 
@@ -41,7 +37,7 @@ public class PopupMakeGifActivity extends Activity {
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
                 shareIntent.setType("image/gif");
-                shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(SelectActivity.click_makegifroot));
+                shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(PathClass.click_makegifroot));
                 startActivity(Intent.createChooser(shareIntent, "공유하기"));
             }
         });

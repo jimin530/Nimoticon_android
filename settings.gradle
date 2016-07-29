@@ -1,1 +1,1 @@
-include ':app', ':turboimageview', ':outlinecropperlib', ':gifviewer'
+include ':app', ':turboimageview', ':outlinecropperlib'
