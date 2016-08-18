@@ -58,7 +58,6 @@ public class SelectGifActivity extends Activity {
         try {
             String CACHE_DIR = Environment.getExternalStorageDirectory()
                     .getAbsolutePath() + "/.temp_tmp";
-            Log.i("경로보자", CACHE_DIR);
             new File(CACHE_DIR).mkdirs();
 
             File cacheDir = StorageUtils.getOwnCacheDirectory(getBaseContext(),

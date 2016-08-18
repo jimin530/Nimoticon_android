@@ -58,6 +58,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
                 .setOnClickListener(this);
         ((ImageButton) findViewById(R.id.btn_transition))
                 .setOnClickListener(this);
+
         btn_emoticon = (ImageButton) findViewById(R.id.btn_emoticon);
         btn_emoticon.setOnClickListener(new OnClickListener() {
             @Override
@@ -65,7 +66,6 @@ public class CameraViewActivity extends Activity implements OnClickListener {
                 PathClass.fromcamera = true;
                 Intent i = new Intent(getApplicationContext(), SelectItemActivity.class);
                 startActivity(i);
-                //finish();
             }
         });
         btn_album = (ImageButton) findViewById(R.id.btn_album);
@@ -74,7 +74,6 @@ public class CameraViewActivity extends Activity implements OnClickListener {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SelectPhotoActivity.class);
                 startActivity(i);
-                //finish();
             }
         });
         btn_storage = (ImageButton) findViewById(R.id.btn_storage);
@@ -83,7 +82,6 @@ public class CameraViewActivity extends Activity implements OnClickListener {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SelectGifActivity.class);
                 startActivity(i);
-                //finish();
             }
         });
         btn_plus = (ImageButton) findViewById(R.id.btn_plus);
@@ -292,13 +290,13 @@ public class CameraViewActivity extends Activity implements OnClickListener {
         initPreview();
     }
 
-	/*@Override
+	@Override
     protected void onDestroy() {
 		super.onDestroy();
 		if (mCamera != null) {
 			mCamera.release(); // release the camera for other applications
 		}
-	}*/
+	}
 
     @Override
     public void onClick(View v) {

@@ -42,10 +42,17 @@ import java.util.Date;
 
 
 public class PlusActivity extends Activity implements TurboImageViewListener {
-    private static final String TAG = "SampleActivity";
 
     Button btn_addcropped;
     Button btn_deletecropped;
+    Button btn_share;
+    Button btn_flip;
+    Button btn_addfirst;
+    Button btn_addsecond;
+    Button btn_addgif;
+    Button btn_send;
+    Button btn_selectemoticon;
+    Button btn_nimoticon;
 
     private TurboImageView turboImageView;
     ImageView iv_background;
@@ -87,11 +94,10 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         });
 
-        findViewById(R.id.removeAllButton).setOnClickListener(new View.OnClickListener() {
+        btn_share = (Button) findViewById(R.id.btn_share);
+        btn_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //turboImageView.removeAllObjects();
-
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
                 shareIntent.setType("image/gif");
@@ -100,44 +106,56 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         });
 
-        findViewById(R.id.flipButton).setOnClickListener(new View.OnClickListener() {
+        btn_flip = (Button) findViewById(R.id.btn_flip);
+        btn_flip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 turboImageView.toggleFlippedHorizontallySelectedObject();
             }
         });
 
-        findViewById(R.id.btn_addfirst).setOnClickListener(new View.OnClickListener() {
+        btn_addfirst = (Button) findViewById(R.id.btn_addfirst);
+        btn_addfirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                iv_background.bringToFront();
                 iv_background.setImageResource(PathClass.click_gifscene1);
             }
         });
-        findViewById(R.id.btn_addsecond).setOnClickListener(new View.OnClickListener() {
+
+        btn_addsecond = (Button) findViewById(R.id.btn_addsecond);
+        btn_addsecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                iv_background.bringToFront();
                 iv_background.setImageResource(PathClass.click_gifscene2);
-
             }
         });
-        findViewById(R.id.btn_addgif).setOnClickListener(new View.OnClickListener() {
+
+        btn_addgif = (Button) findViewById(R.id.btn_addgif);
+        btn_addgif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Drawable d = getResources().getDrawable(R.drawable.gifimage_1);
+                Drawable d = getResources().getDrawable(R.drawable.gifimagescene_001_1);
                 RelativeLayout view = (RelativeLayout) findViewById(R.id.mainlayout);
-                Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth() - 120, d.getIntrinsicHeight() - 120, Bitmap.Config.ARGB_8888);
+                //Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth()/2, d.getIntrinsicHeight()/2, Bitmap.Config.ARGB_8888);
+                Bitmap bitmap = Bitmap.createBitmap(1080, 1062, Bitmap.Config.ARGB_8888);
                 Canvas canvas = new Canvas(bitmap);
                 view.draw(canvas);
                 bitmaps.add(bitmap);
             }
         });
-        findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
+
+        btn_send = (Button) findViewById(R.id.btn_send);
+        btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 makeGif();
             }
         });
-        findViewById(R.id.btn_selectemoticon).setOnClickListener(new View.OnClickListener() {
+
+        btn_selectemoticon = (Button) findViewById(R.id.btn_selectemoticon);
+        btn_selectemoticon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PathClass.fromcamera = false;
@@ -145,7 +163,9 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 startActivity(i);
             }
         });
-        findViewById(R.id.btn_nimoticon).setOnClickListener(new View.OnClickListener() {
+
+        btn_nimoticon = (Button) findViewById(R.id.btn_nimoticon);
+        btn_nimoticon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SelectGifActivity.class);
@@ -153,7 +173,6 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 finish();
             }
         });
-
     }
 
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
@@ -206,18 +225,15 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
 
     @Override
     public void onImageObjectSelected(MultiTouchObject multiTouchObject) {
-        Log.d(TAG, "image object selected");
     }
 
     @Override
     public void onImageObjectDropped() {
-        Log.d(TAG, "image object dropped");
     }
 
     @Override
     public void onCanvasTouched() {
         turboImageView.deselectAll();
-        Log.d(TAG, "canvas touched");
     }
 
     public static Bitmap getBitmapFromAsset(Context context, String filePath) {
@@ -244,16 +260,11 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         SimpleDateFormat CurDateFormat = new SimpleDateFormat("MM_dd_HH_mm_ss");
 
         String name = "Gif" + CurDateFormat.format(date);
-        //Toast.makeText(this, "The .gifs is now saving. This will take ~3 sec per frame", Toast.LENGTH_LONG).show();
 
         progressBar = ProgressDialog.show(this, "Converting...", "~3 sec/frame", true, false);
 
         GifThread gt = new GifThread(name);
         gt.start();
-
-        /*Toast.makeText(this, "You can access the gif in your SD Card storage, under the file Flippy. This directory is: "+ Environment.getExternalStorageDirectory().toString()
-                        + "/Gifs. Or, you can see your saved .gifs in the Gallery, in the album \"Gifs\"",
-                Toast.LENGTH_LONG).show();*/
     }
 
     private class GifThread extends Thread {
@@ -278,7 +289,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 FileOutputStream out = new FileOutputStream(file);
                 AnimatedGifMaker gifs = new AnimatedGifMaker();
                 gifs.start(out);
-                gifs.setDelay(200); //프레임 당 딜레이
+                gifs.setDelay(500); //프레임 당 딜레이
                 gifs.setRepeat(0);
                 gifs.setQuality(20); //10이 디폴트, 1이 최상, 20이  최하
                 gifs.setTransparent(new Color());

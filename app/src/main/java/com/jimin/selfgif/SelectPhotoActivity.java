@@ -141,7 +141,8 @@ public class SelectPhotoActivity extends Activity {
             for (int i = 0; i < selected.size(); i++) {
                 PathClass.take_photoroot.add(selected.get(i).sdcardPath);
             }
-            startActivity(new Intent(getApplicationContext(), CropActivity.class));
+            Intent i = new Intent(getApplicationContext(), CropActivity.class);
+            startActivity(i);
             finish();
 
         }
@@ -160,8 +161,8 @@ public class SelectPhotoActivity extends Activity {
         public void onItemClick(AdapterView<?> l, View v, int position, long id) {
             CustomGallery item = adapter.getItem(position);
             PathClass.now_take_photoroot = item.sdcardPath;
-            startActivity(new Intent(getApplicationContext(), CropActivity.class));
-
+            Intent i = new Intent(getApplicationContext(), CropActivity.class);
+            startActivity(i);
             finish();
         }
     };

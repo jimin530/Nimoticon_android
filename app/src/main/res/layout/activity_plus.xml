@@ -73,7 +73,7 @@
             android:layout_height="0dp"
             android:layout_weight="67">
             <Button
-                android:id="@+id/removeAllButton"
+                android:id="@+id/btn_share"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="공유하기"
@@ -118,7 +118,7 @@
             android:layout_height="0dp"
             android:layout_weight="67">
             <Button
-                android:id="@+id/flipButton"
+                android:id="@+id/btn_flip"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="좌우반전"

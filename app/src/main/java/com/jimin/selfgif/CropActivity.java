@@ -46,7 +46,8 @@ public class CropActivity extends Activity {
         btn_goplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), PlusActivity.class));
+                Intent i = new Intent(getApplicationContext(), PlusActivity.class);
+                startActivity(i);
                 finish();
             }
         });

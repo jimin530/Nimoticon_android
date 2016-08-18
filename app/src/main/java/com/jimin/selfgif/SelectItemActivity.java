@@ -14,9 +14,40 @@ import android.widget.ImageView;
 
 public class SelectItemActivity extends AppCompatActivity {
 
-    public Integer[] mThumbIds = {R.drawable.gifimage_1,
-            R.drawable.gifimage_2, R.drawable.gifimage_3,
-            R.drawable.gifimage_4
+    public Integer[] mThumbIds = {R.drawable.gifimage_001,
+            R.drawable.gifimage_002, R.drawable.gifimage_003,
+            R.drawable.gifimage_004, R.drawable.gifimage_005,
+            R.drawable.gifimage_006, R.drawable.gifimage_007,
+            R.drawable.gifimage_008, R.drawable.gifimage_009,
+            R.drawable.gifimage_010, R.drawable.gifimage_011,
+            R.drawable.gifimage_012, R.drawable.gifimage_013,
+            R.drawable.gifimage_014, R.drawable.gifimage_015,
+            R.drawable.gifimage_016, R.drawable.gifimage_017,
+            R.drawable.gifimage_018, R.drawable.gifimage_019,
+            R.drawable.gifimage_020, R.drawable.gifimage_021,
+            R.drawable.gifimage_022, R.drawable.gifimage_023,
+            R.drawable.gifimage_024, R.drawable.gifimage_025,
+            R.drawable.gifimage_026, R.drawable.gifimage_027,
+            R.drawable.gifimage_028, R.drawable.gifimage_029,
+            R.drawable.gifimage_030, R.drawable.gifimage_031,
+            R.drawable.gifimage_032, R.drawable.gifimage_033,
+            R.drawable.gifimage_034, R.drawable.gifimage_035,
+            R.drawable.gifimage_036, R.drawable.gifimage_037,
+            R.drawable.gifimage_038, R.drawable.gifimage_039,
+            R.drawable.gifimage_040, R.drawable.gifimage_041,
+            R.drawable.gifimage_042, R.drawable.gifimage_043,
+            R.drawable.gifimage_044, R.drawable.gifimage_045,
+            R.drawable.gifimage_046, R.drawable.gifimage_047,
+            R.drawable.gifimage_048, R.drawable.gifimage_049,
+            R.drawable.gifimage_050, R.drawable.gifimage_051,
+            R.drawable.gifimage_052, R.drawable.gifimage_053,
+            R.drawable.gifimage_054, R.drawable.gifimage_055,
+            R.drawable.gifimage_056, R.drawable.gifimage_057,
+            R.drawable.gifimage_058, R.drawable.gifimage_059,
+            R.drawable.gifimage_060, R.drawable.gifimage_061,
+            R.drawable.gifimage_062, R.drawable.gifimage_063,
+            R.drawable.gifimage_064, R.drawable.gifimage_065,
+            R.drawable.gifimage_066
     };
 
     DisplayMetrics mMetrics;
