@@ -1,5 +1,7 @@
 package com.maker.outlinecropperlib;
 
+import android.widget.Toast;
+
 import com.maker.outlinecropperlib.Interfaces.CropperCallback;
 import com.maker.outlinecropperlib.Views.CropperDrawingView;
 

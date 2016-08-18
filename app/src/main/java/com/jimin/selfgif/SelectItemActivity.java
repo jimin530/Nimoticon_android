@@ -49,6 +49,41 @@ public class SelectItemActivity extends AppCompatActivity {
             R.drawable.gifimage_064, R.drawable.gifimage_065,
             R.drawable.gifimage_066
     };
+    /*public Integer[] mThumbIds = {R.drawable.gifimagescene_001_1,
+            R.drawable.gifimagescene_002_1, R.drawable.gifimagescene_003_1,
+            R.drawable.gifimagescene_004_1, R.drawable.gifimagescene_005_1,
+            R.drawable.gifimagescene_006_1, R.drawable.gifimagescene_007_1,
+            R.drawable.gifimagescene_008_1, R.drawable.gifimagescene_009_1,
+            R.drawable.gifimagescene_010_1, R.drawable.gifimagescene_011_1,
+            R.drawable.gifimagescene_012_1, R.drawable.gifimagescene_013_1,
+            R.drawable.gifimagescene_014_1, R.drawable.gifimagescene_015_1,
+            R.drawable.gifimagescene_016_1, R.drawable.gifimagescene_017_1,
+            R.drawable.gifimagescene_018_1, R.drawable.gifimagescene_019_1,
+            R.drawable.gifimagescene_020_1, R.drawable.gifimagescene_021_1,
+            R.drawable.gifimagescene_022_1, R.drawable.gifimagescene_023_1,
+            R.drawable.gifimagescene_024_1, R.drawable.gifimagescene_025_1,
+            R.drawable.gifimagescene_026_1, R.drawable.gifimagescene_027_1,
+            R.drawable.gifimagescene_028_1, R.drawable.gifimagescene_029_1,
+            R.drawable.gifimagescene_030_1, R.drawable.gifimagescene_031_1,
+            R.drawable.gifimagescene_032_1, R.drawable.gifimagescene_033_1,
+            R.drawable.gifimagescene_034_1, R.drawable.gifimagescene_035_1,
+            R.drawable.gifimagescene_036_1, R.drawable.gifimagescene_037_1,
+            R.drawable.gifimagescene_038_1, R.drawable.gifimagescene_039_1,
+            R.drawable.gifimagescene_040_1, R.drawable.gifimagescene_041_1,
+            R.drawable.gifimagescene_042_1, R.drawable.gifimagescene_043_1,
+            R.drawable.gifimagescene_044_1, R.drawable.gifimagescene_045_1,
+            R.drawable.gifimagescene_046_1, R.drawable.gifimagescene_047_1,
+            R.drawable.gifimagescene_048_1, R.drawable.gifimagescene_049_1,
+            R.drawable.gifimagescene_050_1, R.drawable.gifimagescene_051_1,
+            R.drawable.gifimagescene_052_1, R.drawable.gifimagescene_053_1,
+            R.drawable.gifimagescene_054_1, R.drawable.gifimagescene_055_1,
+            R.drawable.gifimagescene_056_1, R.drawable.gifimagescene_057_1,
+            R.drawable.gifimagescene_058_1, R.drawable.gifimagescene_059_1,
+            R.drawable.gifimagescene_060_1, R.drawable.gifimagescene_061_1,
+            R.drawable.gifimagescene_062_1, R.drawable.gifimagescene_063_1,
+            R.drawable.gifimagescene_064_1, R.drawable.gifimagescene_065_1,
+            R.drawable.gifimagescene_066_1
+    };*/
 
     DisplayMetrics mMetrics;
 
@@ -69,7 +104,6 @@ public class SelectItemActivity extends AppCompatActivity {
 
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                 long arg3) {
-
             PathClass.click_gifresource = (int) arg0.getAdapter().getItem(arg2);
             PathClass.click_gifnumber = PathClass.click_gifresource - PathClass.first_resource_number + 1;
             startActivity(new Intent(getApplicationContext(), PopupGifActivity.class));
