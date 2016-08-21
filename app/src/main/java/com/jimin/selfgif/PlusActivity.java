@@ -16,7 +16,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.jimin.selfgif.Camera.CameraViewActivity;
 import com.jimin.selfgif.SaveGif.AnimatedGifMaker;
 import com.munon.turboimageview.MultiTouchObject;
 import com.munon.turboimageview.TurboImageView;
@@ -136,6 +137,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         btn_addgif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                turboImageView.deselectAll();
                 Drawable d = getResources().getDrawable(R.drawable.gifimagescene_001_1);
                 RelativeLayout view = (RelativeLayout) findViewById(R.id.mainlayout);
                 //Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth()/2, d.getIntrinsicHeight()/2, Bitmap.Config.ARGB_8888);
@@ -315,5 +317,14 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         };
     }
-
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) { // 백 버튼
+            PathClass.clearValue();
+            Intent i = new Intent(getApplicationContext(), CameraViewActivity.class);
+            startActivity(i);
+            finish();
+        }
+        return true;
+    }
 }

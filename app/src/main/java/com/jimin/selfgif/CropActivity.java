@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -15,8 +16,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.jimin.selfgif.Camera.CameraViewActivity;
 import com.maker.outlinecropperlib.Interfaces.CropperCallback;
 import com.maker.outlinecropperlib.OutlineCropper;
 import com.maker.outlinecropperlib.Views.CropperDrawingView;
@@ -137,6 +138,16 @@ public class CropActivity extends Activity {
             imageView.setImageBitmap(myBitmap);
             return imageView;
         }
+    }
 
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) { // 백 버튼
+            PathClass.clearValue();
+            Intent i = new Intent(getApplicationContext(), CameraViewActivity.class);
+            startActivity(i);
+            finish();
+        }
+        return true;
     }
 }

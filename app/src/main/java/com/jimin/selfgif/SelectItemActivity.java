@@ -2,150 +2,279 @@ package com.jimin.selfgif;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.LruCache;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.jimin.selfgif.Gallery.GalleryAdapter;
-import com.nostra13.universalimageloader.core.assist.PauseOnScrollListener;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class SelectItemActivity extends AppCompatActivity {
-
-    public int[] mThumbIds = {R.drawable.gifimage_001,
-            R.drawable.gifimage_002, R.drawable.gifimage_003,
-            R.drawable.gifimage_004, R.drawable.gifimage_005,
-            R.drawable.gifimage_006, R.drawable.gifimage_007,
-            R.drawable.gifimage_008, R.drawable.gifimage_009,
-            R.drawable.gifimage_010, R.drawable.gifimage_011,
-            R.drawable.gifimage_012, R.drawable.gifimage_013,
-            R.drawable.gifimage_014, R.drawable.gifimage_015,
-            R.drawable.gifimage_016, R.drawable.gifimage_017,
-            R.drawable.gifimage_018, R.drawable.gifimage_019,
-            R.drawable.gifimage_020, R.drawable.gifimage_021,
-            R.drawable.gifimage_022, R.drawable.gifimage_023,
-            R.drawable.gifimage_024, R.drawable.gifimage_025,
-            R.drawable.gifimage_026, R.drawable.gifimage_027,
-            R.drawable.gifimage_028, R.drawable.gifimage_029,
-            R.drawable.gifimage_030, R.drawable.gifimage_031,
-            R.drawable.gifimage_032, R.drawable.gifimage_033,
-            R.drawable.gifimage_034, R.drawable.gifimage_035,
-            R.drawable.gifimage_036, R.drawable.gifimage_037,
-            R.drawable.gifimage_038, R.drawable.gifimage_039,
-            R.drawable.gifimage_040, R.drawable.gifimage_041,
-            R.drawable.gifimage_042, R.drawable.gifimage_043,
-            R.drawable.gifimage_044, R.drawable.gifimage_045,
-            R.drawable.gifimage_046, R.drawable.gifimage_047,
-            R.drawable.gifimage_048, R.drawable.gifimage_049,
-            R.drawable.gifimage_050, R.drawable.gifimage_051,
-            R.drawable.gifimage_052, R.drawable.gifimage_053,
-            R.drawable.gifimage_054, R.drawable.gifimage_055,
-            R.drawable.gifimage_056, R.drawable.gifimage_057,
-            R.drawable.gifimage_058, R.drawable.gifimage_059,
-            R.drawable.gifimage_060, R.drawable.gifimage_061,
-            R.drawable.gifimage_062, R.drawable.gifimage_063,
-            R.drawable.gifimage_064, R.drawable.gifimage_065,
-            R.drawable.gifimage_066
-    };
-    /*public int[] mThumbIds = {R.drawable.gifimagescene_001_1,
-            R.drawable.gifimagescene_002_1, R.drawable.gifimagescene_003_1,
-            R.drawable.gifimagescene_004_1, R.drawable.gifimagescene_005_1,
-            R.drawable.gifimagescene_006_1, R.drawable.gifimagescene_007_1,
-            R.drawable.gifimagescene_008_1, R.drawable.gifimagescene_009_1,
-            R.drawable.gifimagescene_010_1, R.drawable.gifimagescene_011_1,
-            R.drawable.gifimagescene_012_1, R.drawable.gifimagescene_013_1,
-            R.drawable.gifimagescene_014_1, R.drawable.gifimagescene_015_1,
-            R.drawable.gifimagescene_016_1, R.drawable.gifimagescene_017_1,
-            R.drawable.gifimagescene_018_1, R.drawable.gifimagescene_019_1,
-            R.drawable.gifimagescene_020_1, R.drawable.gifimagescene_021_1,
-            R.drawable.gifimagescene_022_1, R.drawable.gifimagescene_023_1,
-            R.drawable.gifimagescene_024_1, R.drawable.gifimagescene_025_1,
-            R.drawable.gifimagescene_026_1, R.drawable.gifimagescene_027_1,
-            R.drawable.gifimagescene_028_1, R.drawable.gifimagescene_029_1,
-            R.drawable.gifimagescene_030_1, R.drawable.gifimagescene_031_1,
-            R.drawable.gifimagescene_032_1, R.drawable.gifimagescene_033_1,
-            R.drawable.gifimagescene_034_1, R.drawable.gifimagescene_035_1,
-            R.drawable.gifimagescene_036_1, R.drawable.gifimagescene_037_1,
-            R.drawable.gifimagescene_038_1, R.drawable.gifimagescene_039_1,
-            R.drawable.gifimagescene_040_1, R.drawable.gifimagescene_041_1,
-            R.drawable.gifimagescene_042_1, R.drawable.gifimagescene_043_1,
-            R.drawable.gifimagescene_044_1, R.drawable.gifimagescene_045_1,
-            R.drawable.gifimagescene_046_1, R.drawable.gifimagescene_047_1,
-            R.drawable.gifimagescene_048_1, R.drawable.gifimagescene_049_1,
-            R.drawable.gifimagescene_050_1, R.drawable.gifimagescene_051_1,
-            R.drawable.gifimagescene_052_1, R.drawable.gifimagescene_053_1,
-            R.drawable.gifimagescene_054_1, R.drawable.gifimagescene_055_1,
-            R.drawable.gifimagescene_056_1, R.drawable.gifimagescene_057_1,
-            R.drawable.gifimagescene_058_1, R.drawable.gifimagescene_059_1,
-            R.drawable.gifimagescene_060_1, R.drawable.gifimagescene_061_1,
-            R.drawable.gifimagescene_062_1, R.drawable.gifimagescene_063_1,
-            R.drawable.gifimagescene_064_1, R.drawable.gifimagescene_065_1,
-            R.drawable.gifimagescene_066_1
-    };*/
+    ArrayList<String> items = new ArrayList<String>();
 
     DisplayMetrics mMetrics;
-    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectitem);
 
-        GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(this));
-        gridview.setOnItemClickListener(gridviewOnItemClickListener);
-
         mMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
-        //init();
-    }
 
-    private void init() {
+        items.add("gifimage_001"); items.add("gifimage_002"); items.add("gifimage_003"); items.add("gifimage_004"); items.add("gifimage_005");
+        items.add("gifimage_006"); items.add("gifimage_007"); items.add("gifimage_008"); items.add("gifimage_009"); items.add("gifimage_010");
+        items.add("gifimage_011"); items.add("gifimage_012"); items.add("gifimage_013"); items.add("gifimage_014"); items.add("gifimage_015");
+        items.add("gifimage_016"); items.add("gifimage_017"); items.add("gifimage_018"); items.add("gifimage_019"); items.add("gifimage_020");
+        items.add("gifimage_021"); items.add("gifimage_022"); items.add("gifimage_023"); items.add("gifimage_024"); items.add("gifimage_025");
+        items.add("gifimage_026"); items.add("gifimage_027"); items.add("gifimage_028"); items.add("gifimage_029"); items.add("gifimage_030");
+        items.add("gifimage_031"); items.add("gifimage_032"); items.add("gifimage_033"); items.add("gifimage_034"); items.add("gifimage_035");
+        items.add("gifimage_036"); items.add("gifimage_037"); items.add("gifimage_038"); items.add("gifimage_039"); items.add("gifimage_040");
+        items.add("gifimage_041"); items.add("gifimage_042"); items.add("gifimage_043"); items.add("gifimage_044"); items.add("gifimage_045");
+        items.add("gifimage_046"); items.add("gifimage_047"); items.add("gifimage_048"); items.add("gifimage_049"); items.add("gifimage_050");
+        items.add("gifimage_051"); items.add("gifimage_052"); items.add("gifimage_053"); items.add("gifimage_054"); items.add("gifimage_055");
+        items.add("gifimage_056"); items.add("gifimage_057"); items.add("gifimage_058"); items.add("gifimage_059"); items.add("gifimage_060");
+        items.add("gifimage_061"); items.add("gifimage_062"); items.add("gifimage_063"); items.add("gifimage_064"); items.add("gifimage_065");
+        items.add("gifimage_066");
 
-        handler = new Handler();
+        /*for (int p = 0; p <= 9; p++) {
+            items.add("gifimage_00"+p);
+        }
+        for (int p = 10; p <= 66; p++) {
+            items.add("gifimage_0"+p);
+        }*/
+        ListAdapter list = new ListAdapter(this, items);
         GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(this));
+        gridview.setAdapter(list);
         gridview.setOnItemClickListener(gridviewOnItemClickListener);
-        new Thread() {
-
-            @Override
-            public void run() {
-                Looper.prepare();
-                handler.post(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        mMetrics = new DisplayMetrics();
-                        getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
-                    }
-                });
-                Looper.loop();
-            }
-
-            ;
-
-        }.start();
     }
 
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
 
-        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                long arg3) {
-            PathClass.click_gifresource = (int) arg0.getAdapter().getItem(arg2);
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            PathClass.click_gifresource = getApplicationContext().getResources().getIdentifier(arg0.getAdapter().getItem(arg2)+"", "drawable", getApplicationContext().getPackageName());
             PathClass.click_gifnumber = PathClass.click_gifresource - PathClass.first_resource_number + 1;
             startActivity(new Intent(getApplicationContext(), PopupGifActivity.class));
         }
     };
 
-    public class ImageAdapter extends BaseAdapter {
+    public class ListAdapter extends BaseAdapter {
+
+        Context context;
+        ArrayList<String> items;
+        private LruCache<String, Bitmap> mMemoryCache;
+
+        public ListAdapter(Context context, ArrayList<String> items) {
+            this.context = context;
+            this.items = items;
+
+            // Get memory class of this device, exceeding this amount will throw an
+            // OutOfMemory exception.
+            final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+
+            // Use 1/8th of the available memory for this memory cache.
+            final int cacheSize = maxMemory / 8;
+
+            mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
+
+                protected int sizeOf(String key, Bitmap bitmap) {
+                    // The cache size will be measured in bytes rather than number
+                    // of items.
+                    return bitmap.getByteCount();
+                }
+
+            };
+        }
+
+        @Override
+        public int getCount() {
+            return items.size();
+        }
+
+        @Override
+        public Object getItem(int arg0) {
+            return items.get(arg0);
+        }
+
+        @Override
+        public long getItemId(int arg0) {
+            return arg0;
+        }
+
+        @Override
+        public View getView(int arg0, View convertView, ViewGroup arg2) {
+            ImageView img = null;
+            int rowWidth = (mMetrics.widthPixels) / 4;
+
+            if (convertView == null) {
+                img = new ImageView(context);
+                img.setScaleType(ImageView.ScaleType.FIT_XY);
+                img.setLayoutParams(new GridView.LayoutParams(rowWidth, rowWidth));
+                img.setPadding(1, 1, 1, 1);
+            } else {
+                img = (ImageView) convertView;
+            }
+
+            int resId = context.getResources().getIdentifier(items.get(arg0), "drawable", context.getPackageName());
+
+            loadBitmap(resId, img);
+
+            return img;
+        }
+
+        public void loadBitmap(int resId, ImageView imageView) {
+            if (cancelPotentialWork(resId, imageView)) {
+                final BitmapWorkerTask task = new BitmapWorkerTask(imageView);
+                imageView.setBackgroundResource(R.drawable.empty_photo);
+                task.execute(resId);
+            }
+        }
+
+        class AsyncDrawable extends BitmapDrawable {
+            private final WeakReference<BitmapWorkerTask> bitmapWorkerTaskReference;
+
+            public AsyncDrawable(Resources res, Bitmap bitmap,
+                                 BitmapWorkerTask bitmapWorkerTask) {
+                super(res, bitmap);
+                bitmapWorkerTaskReference = new WeakReference<BitmapWorkerTask>(
+                        bitmapWorkerTask);
+            }
+
+            public BitmapWorkerTask getBitmapWorkerTask() {
+                return bitmapWorkerTaskReference.get();
+            }
+        }
+
+        public boolean cancelPotentialWork(int data, ImageView imageView) {
+            final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
+
+            if (bitmapWorkerTask != null) {
+                final int bitmapData = bitmapWorkerTask.data;
+                if (bitmapData != data) {
+                    // Cancel previous task
+                    bitmapWorkerTask.cancel(true);
+                } else {
+                    // The same work is already in progress
+                    return false;
+                }
+            }
+            // No task associated with the ImageView, or an existing task was
+            // cancelled
+            return true;
+        }
+
+        private BitmapWorkerTask getBitmapWorkerTask(ImageView imageView) {
+            if (imageView != null) {
+                final Drawable drawable = imageView.getDrawable();
+                if (drawable instanceof AsyncDrawable) {
+                    final AsyncDrawable asyncDrawable = (AsyncDrawable) drawable;
+                    return asyncDrawable.getBitmapWorkerTask();
+                }
+            }
+            return null;
+        }
+
+        public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
+            if (getBitmapFromMemCache(key) == null) {
+                mMemoryCache.put(key, bitmap);
+            }
+        }
+
+        public Bitmap getBitmapFromMemCache(String key) {
+            return (Bitmap) mMemoryCache.get(key);
+        }
+
+        class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
+            public int data = 0;
+            private final WeakReference<ImageView> imageViewReference;
+
+            public BitmapWorkerTask(ImageView imageView) {
+                // Use a WeakReference to ensure the ImageView can be garbage
+                // collected
+                imageViewReference = new WeakReference<ImageView>(imageView);
+            }
+
+            // Decode image in background.
+            @Override
+            protected Bitmap doInBackground(Integer... params) {
+                data = params[0];
+                final Bitmap bitmap = decodeSampledBitmapFromResource(
+                        context.getResources(), data, 100, 100);
+                addBitmapToMemoryCache(String.valueOf(params[0]), bitmap);
+                return bitmap;
+            }
+
+            // Once complete, see if ImageView is still around and set bitmap.
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                if (imageViewReference != null && bitmap != null) {
+                    final ImageView imageView = imageViewReference.get();
+                    if (imageView != null) {
+                        imageView.setImageBitmap(bitmap);
+                    }
+                }
+            }
+        }
+
+        public Bitmap decodeSampledBitmapFromResource(Resources res,
+                                                             int resId, int reqWidth, int reqHeight) {
+
+            // First decode with inJustDecodeBounds=true to check dimensions
+            final BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            BitmapFactory.decodeResource(res, resId, options);
+
+            // Calculate inSampleSize
+            options.inSampleSize = calculateInSampleSize(options, reqWidth,
+                    reqHeight);
+
+            // Decode bitmap with inSampleSize set
+            options.inJustDecodeBounds = false;
+            return BitmapFactory.decodeResource(res, resId, options);
+        }
+
+        public int calculateInSampleSize(BitmapFactory.Options options,
+                                                int reqWidth, int reqHeight) {
+            // Raw height and width of image
+            final int height = options.outHeight;
+            final int width = options.outWidth;
+            int inSampleSize = 1;
+
+            if (height > reqHeight || width > reqWidth) {
+
+                // Calculate ratios of height and width to requested height and
+                // width
+                final int heightRatio = Math.round((float) height
+                        / (float) reqHeight);
+                final int widthRatio = Math.round((float) width / (float) reqWidth);
+
+                // Choose the smallest ratio as inSampleSize value, this will
+                // guarantee
+                // a final image with both dimensions larger than or equal to the
+                // requested height and width.
+                inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+            }
+
+            return inSampleSize;
+        }
+
+    }
+
+
+    /*public class ImageAdapter extends BaseAdapter {
         private Context mContext;
 
         public ImageAdapter(Context c) {
@@ -182,7 +311,7 @@ public class SelectItemActivity extends AppCompatActivity {
             return imageView;
         }
 
-    }
+    }*/
     /*@Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) { // 백 버튼

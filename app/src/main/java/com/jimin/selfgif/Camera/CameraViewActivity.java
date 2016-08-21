@@ -89,6 +89,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), CropActivity.class));
+                btn_plus.setEnabled(false);
             }
         });
         btn_plus.setEnabled(false);
@@ -304,6 +305,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
         super.onDestroy();
         if (mCamera != null) {
             mCamera.release(); // release the camera for other applications
+            PathClass.clearValue();
         }
     }
 
