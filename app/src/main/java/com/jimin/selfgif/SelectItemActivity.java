@@ -35,27 +35,7 @@ public class SelectItemActivity extends AppCompatActivity {
         mMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
 
-        items.add("gifimage_001"); items.add("gifimage_002"); items.add("gifimage_003"); items.add("gifimage_004"); items.add("gifimage_005");
-        items.add("gifimage_006"); items.add("gifimage_007"); items.add("gifimage_008"); items.add("gifimage_009"); items.add("gifimage_010");
-        items.add("gifimage_011"); items.add("gifimage_012"); items.add("gifimage_013"); items.add("gifimage_014"); items.add("gifimage_015");
-        items.add("gifimage_016"); items.add("gifimage_017"); items.add("gifimage_018"); items.add("gifimage_019"); items.add("gifimage_020");
-        items.add("gifimage_021"); items.add("gifimage_022"); items.add("gifimage_023"); items.add("gifimage_024"); items.add("gifimage_025");
-        items.add("gifimage_026"); items.add("gifimage_027"); items.add("gifimage_028"); items.add("gifimage_029"); items.add("gifimage_030");
-        items.add("gifimage_031"); items.add("gifimage_032"); items.add("gifimage_033"); items.add("gifimage_034"); items.add("gifimage_035");
-        items.add("gifimage_036"); items.add("gifimage_037"); items.add("gifimage_038"); items.add("gifimage_039"); items.add("gifimage_040");
-        items.add("gifimage_041"); items.add("gifimage_042"); items.add("gifimage_043"); items.add("gifimage_044"); items.add("gifimage_045");
-        items.add("gifimage_046"); items.add("gifimage_047"); items.add("gifimage_048"); items.add("gifimage_049"); items.add("gifimage_050");
-        items.add("gifimage_051"); items.add("gifimage_052"); items.add("gifimage_053"); items.add("gifimage_054"); items.add("gifimage_055");
-        items.add("gifimage_056"); items.add("gifimage_057"); items.add("gifimage_058"); items.add("gifimage_059"); items.add("gifimage_060");
-        items.add("gifimage_061"); items.add("gifimage_062"); items.add("gifimage_063"); items.add("gifimage_064"); items.add("gifimage_065");
-        items.add("gifimage_066");
-
-        /*for (int p = 0; p <= 9; p++) {
-            items.add("gifimage_00"+p);
-        }
-        for (int p = 10; p <= 66; p++) {
-            items.add("gifimage_0"+p);
-        }*/
+        insert_Item();
         ListAdapter list = new ListAdapter(this, items);
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(list);
@@ -273,45 +253,29 @@ public class SelectItemActivity extends AppCompatActivity {
 
     }
 
-
-    /*public class ImageAdapter extends BaseAdapter {
-        private Context mContext;
-
-        public ImageAdapter(Context c) {
-            mContext = c;
+    public void insert_Item()
+    {
+        items.add("gifimage_001"); items.add("gifimage_002"); items.add("gifimage_003"); items.add("gifimage_004"); items.add("gifimage_005");
+        items.add("gifimage_006"); items.add("gifimage_007"); items.add("gifimage_008"); items.add("gifimage_009"); items.add("gifimage_010");
+        items.add("gifimage_011"); items.add("gifimage_012"); items.add("gifimage_013"); items.add("gifimage_014"); items.add("gifimage_015");
+        items.add("gifimage_016"); items.add("gifimage_017"); items.add("gifimage_018"); items.add("gifimage_019"); items.add("gifimage_020");
+        items.add("gifimage_021"); items.add("gifimage_022"); items.add("gifimage_023"); items.add("gifimage_024"); items.add("gifimage_025");
+        items.add("gifimage_026"); items.add("gifimage_027"); items.add("gifimage_028"); items.add("gifimage_029"); items.add("gifimage_030");
+        items.add("gifimage_031"); items.add("gifimage_032"); items.add("gifimage_033"); items.add("gifimage_034"); items.add("gifimage_035");
+        items.add("gifimage_036"); items.add("gifimage_037"); items.add("gifimage_038"); items.add("gifimage_039"); items.add("gifimage_040");
+        items.add("gifimage_041"); items.add("gifimage_042"); items.add("gifimage_043"); items.add("gifimage_044"); items.add("gifimage_045");
+        items.add("gifimage_046"); items.add("gifimage_047"); items.add("gifimage_048"); items.add("gifimage_049"); items.add("gifimage_050");
+        items.add("gifimage_051"); items.add("gifimage_052"); items.add("gifimage_053"); items.add("gifimage_054"); items.add("gifimage_055");
+        items.add("gifimage_056"); items.add("gifimage_057"); items.add("gifimage_058"); items.add("gifimage_059"); items.add("gifimage_060");
+        items.add("gifimage_061"); items.add("gifimage_062"); items.add("gifimage_063"); items.add("gifimage_064"); items.add("gifimage_065");
+        items.add("gifimage_066");
+        /*for (int p = 0; p <= 9; p++) {
+            items.add("gifimage_00"+p);
         }
-
-        public int getCount() {
-            return mThumbIds.length;
-        }
-
-        public Object getItem(int position) {
-            return mThumbIds[position];
-        }
-
-        public long getItemId(int position) {
-            return position;
-        }
-
-        // create a new ImageView for each item referenced by the Adapter
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            int rowWidth = (mMetrics.widthPixels) / 4;
-
-            ImageView imageView;
-            if (convertView == null) {
-                imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(rowWidth, rowWidth));
-                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                imageView.setPadding(1, 1, 1, 1);
-            } else {
-                imageView = (ImageView) convertView;
-            }
-            imageView.setImageResource(mThumbIds[position]);
-            return imageView;
-        }
-
-    }*/
+        for (int p = 10; p <= 66; p++) {
+            items.add("gifimage_0"+p);
+        }*/
+    }
     /*@Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) { // 백 버튼

@@ -11,6 +11,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
@@ -252,6 +253,8 @@ public class CameraViewActivity extends Activity implements OnClickListener {
                 outStream = new FileOutputStream(file + "/" + name + ".jpg");
                 rotateBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
                 outStream.close();
+
+                sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + file + "/" + name + ".jpg")));
 
             } catch (FileNotFoundException e) {
                 Log.d(TAG, "File not found: " + e.getMessage());

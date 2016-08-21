@@ -300,7 +300,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                     gifs.addFrame(bitmaps.get(i));
                 }
                 gifs.finish();
-                //sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory()))); //미디어 스캐닝
+                sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + myDir + "/" + fname + ".gif")));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -317,6 +317,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         };
     }
+
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) { // 백 버튼
