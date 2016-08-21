@@ -222,7 +222,16 @@ public class CameraViewActivity extends Activity implements OnClickListener {
 
             Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
             Matrix m = new Matrix();
-            m.setRotate(270, (float) bmp.getWidth(), (float) bmp.getHeight());
+
+            if (mCurrentCamera == CameraInfo.CAMERA_FACING_BACK) {
+                m.setRotate(270, (float) bmp.getWidth(), (float) bmp.getHeight());
+                m.postRotate(180);
+            } else {
+                m.setRotate(270, (float) bmp.getWidth(), (float) bmp.getHeight());
+                m.setScale(-1, 1);  // 좌우반전
+                m.postRotate(90);
+            }
+
             Bitmap rotateBitmap = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), m, false);
             OutputStream outStream = null;
 
@@ -290,13 +299,13 @@ public class CameraViewActivity extends Activity implements OnClickListener {
         initPreview();
     }
 
-	@Override
+    @Override
     protected void onDestroy() {
-		super.onDestroy();
-		if (mCamera != null) {
-			mCamera.release(); // release the camera for other applications
-		}
-	}
+        super.onDestroy();
+        if (mCamera != null) {
+            mCamera.release(); // release the camera for other applications
+        }
+    }
 
     @Override
     public void onClick(View v) {

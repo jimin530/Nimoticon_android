@@ -3,18 +3,24 @@ package com.jimin.selfgif;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.jimin.selfgif.Gallery.GalleryAdapter;
+import com.nostra13.universalimageloader.core.assist.PauseOnScrollListener;
+
 public class SelectItemActivity extends AppCompatActivity {
 
-    public Integer[] mThumbIds = {R.drawable.gifimage_001,
+    public int[] mThumbIds = {R.drawable.gifimage_001,
             R.drawable.gifimage_002, R.drawable.gifimage_003,
             R.drawable.gifimage_004, R.drawable.gifimage_005,
             R.drawable.gifimage_006, R.drawable.gifimage_007,
@@ -49,7 +55,7 @@ public class SelectItemActivity extends AppCompatActivity {
             R.drawable.gifimage_064, R.drawable.gifimage_065,
             R.drawable.gifimage_066
     };
-    /*public Integer[] mThumbIds = {R.drawable.gifimagescene_001_1,
+    /*public int[] mThumbIds = {R.drawable.gifimagescene_001_1,
             R.drawable.gifimagescene_002_1, R.drawable.gifimagescene_003_1,
             R.drawable.gifimagescene_004_1, R.drawable.gifimagescene_005_1,
             R.drawable.gifimagescene_006_1, R.drawable.gifimagescene_007_1,
@@ -86,6 +92,7 @@ public class SelectItemActivity extends AppCompatActivity {
     };*/
 
     DisplayMetrics mMetrics;
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +105,34 @@ public class SelectItemActivity extends AppCompatActivity {
 
         mMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
+        //init();
+    }
+
+    private void init() {
+
+        handler = new Handler();
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview.setAdapter(new ImageAdapter(this));
+        gridview.setOnItemClickListener(gridviewOnItemClickListener);
+        new Thread() {
+
+            @Override
+            public void run() {
+                Looper.prepare();
+                handler.post(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        mMetrics = new DisplayMetrics();
+                        getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
+                    }
+                });
+                Looper.loop();
+            }
+
+            ;
+
+        }.start();
     }
 
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
