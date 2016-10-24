@@ -268,7 +268,7 @@ public class SelectItemActivity extends AppCompatActivity {
         items.add("gifimage_051"); items.add("gifimage_052"); items.add("gifimage_053"); items.add("gifimage_054"); items.add("gifimage_055");
         items.add("gifimage_056"); items.add("gifimage_057"); items.add("gifimage_058"); items.add("gifimage_059"); items.add("gifimage_060");
         items.add("gifimage_061"); items.add("gifimage_062"); items.add("gifimage_063"); items.add("gifimage_064"); items.add("gifimage_065");
-        items.add("gifimage_066");
+        items.add("gifimage_066"); items.add("gifimage_067");
         /*for (int p = 0; p <= 9; p++) {
             items.add("gifimage_00"+p);
         }

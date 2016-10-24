@@ -141,7 +141,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 Drawable d = getResources().getDrawable(R.drawable.gifimagescene_001_1);
                 RelativeLayout view = (RelativeLayout) findViewById(R.id.mainlayout);
                 //Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth()/2, d.getIntrinsicHeight()/2, Bitmap.Config.ARGB_8888);
-                Bitmap bitmap = Bitmap.createBitmap(1080, 1062, Bitmap.Config.ARGB_8888);
+                Bitmap bitmap = Bitmap.createBitmap(iv_background.getWidth(), iv_background.getHeight(), Bitmap.Config.ARGB_8888);
+                //Bitmap bitmap = Bitmap.createBitmap(640, 631, Bitmap.Config.ARGB_8888);
                 Canvas canvas = new Canvas(bitmap);
                 view.draw(canvas);
                 bitmaps.add(bitmap);
@@ -293,8 +294,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 gifs.start(out);
                 gifs.setDelay(500); //프레임 당 딜레이
                 gifs.setRepeat(0);
-                gifs.setQuality(20); //10이 디폴트, 1이 최상, 20이  최하
-                gifs.setTransparent(new Color());
+                gifs.setQuality(10); //10이 디폴트, 1이 최상, 20이  최하
+                //gifs.setTransparent(new Color());
 
                 for (int i = 0; i < bitmaps.size(); i++) {
                     gifs.addFrame(bitmaps.get(i));

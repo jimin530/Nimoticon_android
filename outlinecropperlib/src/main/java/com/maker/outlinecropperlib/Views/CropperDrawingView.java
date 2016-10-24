@@ -70,8 +70,10 @@ public class CropperDrawingView extends View {
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
 
-        int imgWidth = imageCrop.getWidth();
-        int imgHeight = imageCrop.getHeight();
+        /*int imgWidth = imageCrop.getWidth();
+        int imgHeight = imageCrop.getHeight();*/
+        int imgWidth = width;
+        int imgHeight = height;
 
         Log.d(TAG, String.format("START ### w: %d | h: %d | imgW: %d | imgH: %d", width, height, imgWidth, imgHeight));
 

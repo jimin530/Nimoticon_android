@@ -322,4 +322,5 @@ public class CameraViewActivity extends Activity implements OnClickListener {
         }
 
     }
+
 }
