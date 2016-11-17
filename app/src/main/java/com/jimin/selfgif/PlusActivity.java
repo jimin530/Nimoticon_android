@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -44,15 +45,15 @@ import java.util.Date;
 
 public class PlusActivity extends Activity implements TurboImageViewListener {
 
-    Button btn_addcropped;
-    Button btn_deletecropped;
-    Button btn_share;
-    Button btn_flip;
+    ImageButton btn_addcropped;
+    ImageButton btn_deletecropped;
+    ImageButton btn_share;
+    ImageButton btn_flip;
     Button btn_addfirst;
     Button btn_addsecond;
     Button btn_addgif;
-    Button btn_send;
-    Button btn_selectemoticon;
+    ImageButton btn_send;
+    ImageButton btn_selectemoticon;
     Button btn_nimoticon;
 
     private TurboImageView turboImageView;
@@ -80,14 +81,14 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
 
         iv_background = (ImageView) findViewById(R.id.iv_background);
 
-        btn_addcropped = (Button) findViewById(R.id.btn_addcropped);
+        btn_addcropped = (ImageButton) findViewById(R.id.btn_addcropped);
         btn_addcropped.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 turboImageView.addObject(PlusActivity.this, selected_cropped);
             }
         });
-        btn_deletecropped = (Button) findViewById(R.id.btn_deletecropped);
+        btn_deletecropped = (ImageButton) findViewById(R.id.btn_deletecropped);
         btn_deletecropped.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +96,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         });
 
-        btn_share = (Button) findViewById(R.id.btn_share);
+        btn_share = (ImageButton) findViewById(R.id.btn_share);
         btn_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +108,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         });
 
-        btn_flip = (Button) findViewById(R.id.btn_flip);
+        btn_flip = (ImageButton) findViewById(R.id.btn_flip);
         btn_flip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,7 +134,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         });
 
-        btn_addgif = (Button) findViewById(R.id.btn_addgif);
+        /*btn_addgif = (Button) findViewById(R.id.btn_addgif);
         btn_addgif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,9 +148,9 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 view.draw(canvas);
                 bitmaps.add(bitmap);
             }
-        });
+        });*/
 
-        btn_send = (Button) findViewById(R.id.btn_send);
+        btn_send = (ImageButton) findViewById(R.id.btn_send);
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,7 +158,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         });
 
-        btn_selectemoticon = (Button) findViewById(R.id.btn_selectemoticon);
+        btn_selectemoticon = (ImageButton) findViewById(R.id.btn_selectemoticon);
         btn_selectemoticon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,7 +168,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         });
 
-        btn_nimoticon = (Button) findViewById(R.id.btn_nimoticon);
+        /*btn_nimoticon = (Button) findViewById(R.id.btn_nimoticon);
         btn_nimoticon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,7 +176,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 startActivity(i);
                 finish();
             }
-        });
+        });*/
     }
 
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {

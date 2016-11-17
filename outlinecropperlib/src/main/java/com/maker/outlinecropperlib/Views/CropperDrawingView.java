@@ -2,6 +2,7 @@ package com.maker.outlinecropperlib.Views;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.maker.outlinecropperlib.Models.CropPoint;
+import com.maker.outlinecropperlib.R;
 
 import java.util.ArrayList;
 
@@ -107,7 +109,7 @@ public class CropperDrawingView extends View {
         mPaint.setPathEffect(new DashPathEffect(new float[]{20, 20}, 0));
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
-        mPaint.setColor(Color.BLUE);
+        mPaint.setColor(getResources().getColor(R.color.material_deep_teal_500));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -115,7 +117,7 @@ public class CropperDrawingView extends View {
 
         circlePaint.setPathEffect(new DashPathEffect(new float[]{20, 20}, 0));
         circlePaint.setAntiAlias(true);
-        circlePaint.setColor(Color.RED);
+        mPaint.setColor(getResources().getColor(R.color.primary_text_disabled_material_dark));
         circlePaint.setStyle(Paint.Style.STROKE);
         circlePaint.setStrokeJoin(Paint.Join.MITER);
         circlePaint.setStrokeWidth(8f);

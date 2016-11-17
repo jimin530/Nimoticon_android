@@ -1,10 +1,12 @@
 package com.jimin.selfgif;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -22,10 +24,14 @@ import android.widget.ImageView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-public class SelectItemActivity extends AppCompatActivity {
+public class SelectItemActivity extends Activity {
     ArrayList<String> items = new ArrayList<String>();
 
     DisplayMetrics mMetrics;
+
+    private int previousSelectedPosition = -1;
+
+    GridView gridview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +43,7 @@ public class SelectItemActivity extends AppCompatActivity {
 
         insert_Item();
         ListAdapter list = new ListAdapter(this, items);
-        GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(list);
         gridview.setOnItemClickListener(gridviewOnItemClickListener);
     }
@@ -47,7 +53,25 @@ public class SelectItemActivity extends AppCompatActivity {
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
             PathClass.click_gifresource = getApplicationContext().getResources().getIdentifier(arg0.getAdapter().getItem(arg2)+"", "drawable", getApplicationContext().getPackageName());
             PathClass.click_gifnumber = PathClass.click_gifresource - PathClass.first_resource_number + 1;
+            //arg1.setBackgroundColor(getResources().getColor(R.color.md_material_blue_600));
             startActivity(new Intent(getApplicationContext(), PopupGifActivity.class));
+
+            /*View previousSelectedView = (View) gridview.getChildAt(previousSelectedPosition);
+
+            if (previousSelectedPosition != -1)
+            {
+                // Set the last selected View to deselect
+                previousSelectedView.setSelected(false);
+
+                // Set the last selected View background color as deselected item
+                previousSelectedView.setBackgroundColor(Color.parseColor("#FFFF4F25"));
+
+                // Set the last selected View text color as deselected item
+                previousSelectedView.setBackgroundColor(Color.DKGRAY);
+            }
+
+            // Set the current selected view position as previousSelectedPosition
+            previousSelectedPosition = arg2;*/
         }
     };
 

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
@@ -15,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.jimin.selfgif.Camera.CameraViewActivity;
@@ -30,7 +32,8 @@ public class CropActivity extends Activity {
 
     DisplayMetrics mMetrics;
 
-    Button btn_goplus;
+    ImageButton btn_cancel;
+    ImageButton btn_next2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,17 @@ public class CropActivity extends Activity {
         mMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
 
-        btn_goplus = (Button) findViewById(R.id.btn_goplus);
-        btn_goplus.setOnClickListener(new View.OnClickListener() {
+        btn_cancel = (ImageButton) findViewById(R.id.btn_cancel);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PathClass.take_photoroot.clear();
+                finish();
+            }
+        });
+
+        btn_next2 = (ImageButton) findViewById(R.id.btn_next2);
+        btn_next2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), PlusActivity.class);
@@ -53,7 +65,7 @@ public class CropActivity extends Activity {
                 finish();
             }
         });
-        btn_goplus.setEnabled(false);
+        btn_next2.setEnabled(false);
 
         pd = new ProgressDialog(this);
         pd.setMessage("Cropping...");
@@ -76,14 +88,14 @@ public class CropActivity extends Activity {
                         pd.dismiss();
                         if (cropResultBitmap != null) {
                             PathClass.crop_list.add(cropResultBitmap);
-                            btn_goplus.setEnabled(true);
+                            btn_next2.setEnabled(true);
                         }
                     }
                 });
             }
         });
 
-        Button btnCrop = (Button) findViewById(R.id.btn_crop);
+        ImageButton btnCrop = (ImageButton) findViewById(R.id.btn_crop);
         btnCrop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

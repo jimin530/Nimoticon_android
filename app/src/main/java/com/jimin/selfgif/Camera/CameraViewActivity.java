@@ -48,7 +48,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
     ImageButton btn_emoticon;
     ImageButton btn_album;
     ImageButton btn_storage;
-    ImageButton btn_plus;
+    ImageButton btn_next1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,15 +85,15 @@ public class CameraViewActivity extends Activity implements OnClickListener {
                 startActivity(i);
             }
         });
-        btn_plus = (ImageButton) findViewById(R.id.btn_plus);
-        btn_plus.setOnClickListener(new OnClickListener() {
+        btn_next1 = (ImageButton) findViewById(R.id.btn_next1);
+        btn_next1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), CropActivity.class));
-                btn_plus.setEnabled(false);
+                btn_next1.setEnabled(false);
             }
         });
-        btn_plus.setEnabled(false);
+        btn_next1.setEnabled(false);
 
         mPreviewContainer = (FrameLayout) findViewById(R.id.camera_preview);
 
@@ -261,7 +261,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
             } catch (IOException e) {
                 Log.d(TAG, "Error accessing file: " + e.getMessage());
             }
-            btn_plus.setEnabled(true);
+            btn_next1.setEnabled(true);
             PathClass.take_photoroot.add(PathClass.basicsavephotoroot + PathClass.now_take_photoname + ".jpg");
         }
     };
