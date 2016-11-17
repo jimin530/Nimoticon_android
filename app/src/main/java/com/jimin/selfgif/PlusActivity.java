@@ -51,7 +51,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
     ImageButton btn_flip;
     Button btn_addfirst;
     Button btn_addsecond;
-    Button btn_addgif;
+    ImageButton btn_addgif;
     ImageButton btn_send;
     ImageButton btn_selectemoticon;
     Button btn_nimoticon;
@@ -134,7 +134,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         });
 
-        /*btn_addgif = (Button) findViewById(R.id.btn_addgif);
+        btn_addgif = (ImageButton) findViewById(R.id.btn_addgif);
         btn_addgif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,7 +148,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 view.draw(canvas);
                 bitmaps.add(bitmap);
             }
-        });*/
+        });
 
         btn_send = (ImageButton) findViewById(R.id.btn_send);
         btn_send.setOnClickListener(new View.OnClickListener() {

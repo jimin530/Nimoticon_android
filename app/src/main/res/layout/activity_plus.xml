@@ -61,7 +61,24 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="470"/>
+                    android:layout_weight="20"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="105">
+                    <ImageButton
+                        android:id="@+id/btn_addgif"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:ellipsize="middle"
+                        android:background="@drawable/btn_addgif"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="345"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
