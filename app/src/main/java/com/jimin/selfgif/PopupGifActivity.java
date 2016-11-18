@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.jimin.selfgif.Camera.CameraViewActivity;
 import com.jimin.selfgif.SaveGif.AnimatedGifImageView;
@@ -15,8 +16,8 @@ import com.jimin.selfgif.SaveGif.AnimatedGifImageView.TYPE;
 public class PopupGifActivity extends Activity {
 
     AnimatedGifImageView animatedGifImageView;
-    Button btn_please;
-    Button btn_selectimg;
+    ImageButton btn_please;
+    ImageButton btn_selectimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class PopupGifActivity extends Activity {
 
         }
 
-        btn_selectimg = (Button) findViewById(R.id.btn_selectimg);
+        btn_selectimg = (ImageButton) findViewById(R.id.btn_selectimg);
         btn_selectimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +47,7 @@ public class PopupGifActivity extends Activity {
             }
         });
 
-        btn_please = (Button) findViewById(R.id.btn_please);
+        btn_please = (ImageButton) findViewById(R.id.btn_please);
         btn_please.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

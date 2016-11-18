@@ -10,7 +10,7 @@
         android:width="0dp">
     </stroke>
 
-    <padding
+    <!--<padding
         android:left="5dp"
         android:top="5dp"
         android:right="5dp"
@@ -19,5 +19,5 @@
 
     <corners
         android:radius="11dp"   >
-    </corners>
+    </corners>-->
 </shape>
