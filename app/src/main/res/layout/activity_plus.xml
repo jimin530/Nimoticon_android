@@ -36,9 +36,7 @@
                         android:id="@+id/btn_addfirst"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:ellipsize="middle"
-                        android:visibility="visible"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -53,9 +51,7 @@
                         android:id="@+id/btn_addsecond"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:ellipsize="middle"
-                        android:visibility="visible"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -117,28 +113,39 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="15" />
-            <RelativeLayout
-                android:id="@+id/mainlayout"
+                android:layout_weight="80" />
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="830">
-                <ImageView
-                    android:id="@+id/iv_background"
+                android:layout_weight="765"
+                android:orientation="vertical"
+                android:weightSum="1000">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:scaleType="fitStart"
-                    />
+                    android:layout_height="0dp"
+                    android:layout_weight="200"/>
+                <RelativeLayout
+                    android:id="@+id/mainlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="600">
+                    <ImageView
+                        android:id="@+id/iv_background"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
 
-                <com.munon.turboimageview.TurboImageView
-                    android:id="@+id/turboImageView"
+                    <com.munon.turboimageview.TurboImageView
+                        android:id="@+id/turboImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </RelativeLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="1000"
-                    />
-            </RelativeLayout>
+                    android:layout_height="0dp"
+                    android:layout_weight="200"/>
+            </LinearLayout>
 
         </LinearLayout>
         <LinearLayout

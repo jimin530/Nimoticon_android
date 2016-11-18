@@ -15,6 +15,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.jimin.selfgif.Camera.CameraViewActivity;
@@ -40,7 +41,7 @@ public class SelectGifActivity extends Activity {
     GalleryAdapter adapter;
 
     ImageView imgNoMedia;
-    Button btnGalleryOk;
+    ImageButton btnGalleryOk;
     private ImageLoader imageLoader;
 
     @Override
@@ -97,7 +98,7 @@ public class SelectGifActivity extends Activity {
         gridGallery.setAdapter(adapter);
         imgNoMedia = (ImageView) findViewById(R.id.imgNoMedia);
 
-        btnGalleryOk = (Button) findViewById(R.id.btnGalleryOk);
+        btnGalleryOk = (ImageButton) findViewById(R.id.btnGalleryOk);
         btnGalleryOk.setOnClickListener(mOkClickListener);
 
         new Thread() {

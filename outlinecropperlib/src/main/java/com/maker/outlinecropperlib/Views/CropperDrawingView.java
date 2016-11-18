@@ -68,27 +68,34 @@ public class CropperDrawingView extends View {
     }
 
 
-    public void setImageCrop(Bitmap imageCrop) {
+    public void setImageCrop(Bitmap imageCrop, int w, int h) {
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
 
-        /*int imgWidth = imageCrop.getWidth();
-        int imgHeight = imageCrop.getHeight();*/
-        int imgWidth = width;
-        int imgHeight = height;
+        int imgWidth = imageCrop.getWidth();
+        int imgHeight = imageCrop.getHeight();
+
+        int final_w = 0;
+        int final_h = 0;
+        /*int imgWidth = width;
+        int imgHeight = height;*/
 
         Log.d(TAG, String.format("START ### w: %d | h: %d | imgW: %d | imgH: %d", width, height, imgWidth, imgHeight));
 
         if (isPortrait()) {
-            double dif = (imgWidth > width) ? (((double) imgWidth) / ((double) width)) : (((double) width) / ((double) imgWidth));
-            height = (int) (((double) imgHeight) / dif);
+            /*double dif = (imgWidth > width) ? (((double) imgWidth) / ((double) width)) : (((double) width) / ((double) imgWidth));
+            height = (int) (((double) imgHeight) / dif);*/
+            final_w = w;
+            final_h = h;
         } else {
-
+            final_w = w;
+            final_h = h*imageCrop.getHeight()/imageCrop.getWidth();
         }
 
         Log.d(TAG, String.format("RESULT ### w: %d | h: %d | imgW: %d | imgH: %d", width, height, imgWidth, imgHeight));
 
-        this.imageCrop = Bitmap.createScaledBitmap(imageCrop, width, height, true);
+        //this.imageCrop = Bitmap.createScaledBitmap(imageCrop, width, height, true);
+        this.imageCrop = Bitmap.createScaledBitmap(imageCrop, final_w, final_h, true);
         invalidate();
     }
 
@@ -109,7 +116,7 @@ public class CropperDrawingView extends View {
         mPaint.setPathEffect(new DashPathEffect(new float[]{20, 20}, 0));
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
-        mPaint.setColor(getResources().getColor(R.color.material_deep_teal_500));
+        mPaint.setColor(Color.rgb(86, 194, 186));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -117,7 +124,7 @@ public class CropperDrawingView extends View {
 
         circlePaint.setPathEffect(new DashPathEffect(new float[]{20, 20}, 0));
         circlePaint.setAntiAlias(true);
-        mPaint.setColor(getResources().getColor(R.color.primary_text_disabled_material_dark));
+        mPaint.setColor(Color.rgb(86, 194, 186));
         circlePaint.setStyle(Paint.Style.STROKE);
         circlePaint.setStrokeJoin(Paint.Join.MITER);
         circlePaint.setStrokeWidth(8f);
@@ -304,7 +311,7 @@ public class CropperDrawingView extends View {
                     color));
             distance = distance + speed;
         }
-        Log.i("머냐이건",newPoints.toString());
+        Log.i("??",newPoints.toString());
         return newPoints;
     }
 

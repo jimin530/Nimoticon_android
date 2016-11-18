@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.jimin.selfgif.Camera.CameraViewActivity;
 import com.maker.outlinecropperlib.Interfaces.CropperCallback;
@@ -31,7 +34,7 @@ public class CropActivity extends Activity {
     private ProgressDialog pd;
 
     DisplayMetrics mMetrics;
-
+    LinearLayout ll_crop;
     ImageButton btn_cancel;
     ImageButton btn_next2;
 
@@ -39,7 +42,7 @@ public class CropActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crop);
-
+        ll_crop = (LinearLayout) findViewById(R.id.ll_crop);
         GridView gridview = (GridView) findViewById(R.id.gv_shotlist);
         gridview.setAdapter(new CropActivity.ImageAdapter(this));
         gridview.setOnItemClickListener(gridviewOnItemClickListener);
@@ -68,11 +71,12 @@ public class CropActivity extends Activity {
         btn_next2.setEnabled(false);
 
         pd = new ProgressDialog(this);
-        pd.setMessage("Cropping...");
+        pd.setMessage("처리중..");
 
         cropperDrawingView = (CropperDrawingView) findViewById(R.id.cropper_drawing_view);
 
-        cropperDrawingView.setImageCrop(BitmapFactory.decodeFile(PathClass.take_photoroot.get(0)));
+        Log.d("확인",ll_crop.getWidth() +"   "+ll_crop.getHeight());
+
 
         outlineCropper = new OutlineCropper(cropperDrawingView, new CropperCallback() {
             @Override
@@ -104,12 +108,11 @@ public class CropActivity extends Activity {
                 }
             }
         });
-
     }
 
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-            cropperDrawingView.setImageCrop(BitmapFactory.decodeFile(arg0.getAdapter().getItem(arg2).toString()));
+            cropperDrawingView.setImageCrop(BitmapFactory.decodeFile(arg0.getAdapter().getItem(arg2).toString()), ll_crop.getWidth(), ll_crop.getHeight());
         }
     };
 

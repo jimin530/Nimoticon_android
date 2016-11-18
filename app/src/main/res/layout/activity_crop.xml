@@ -126,17 +126,12 @@
         android:background="@android:color/black" />
 
     <LinearLayout
+        android:id="@+id/ll_crop"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="730"
         android:orientation="horizontal"
         android:weightSum="1000">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0" />
-
         <view
             android:id="@+id/cropper_drawing_view"
             class="com.maker.outlinecropperlib.Views.CropperDrawingView"
@@ -144,13 +139,7 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_weight="1000" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0" />
-
+            android:layout_weight="1000"/>
     </LinearLayout>
 
 

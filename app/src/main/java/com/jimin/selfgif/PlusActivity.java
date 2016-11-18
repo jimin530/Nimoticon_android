@@ -9,7 +9,6 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -54,11 +53,10 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
     ImageButton btn_addgif;
     ImageButton btn_send;
     ImageButton btn_selectemoticon;
-    Button btn_nimoticon;
 
     private TurboImageView turboImageView;
     ImageView iv_background;
-
+    RelativeLayout view;
     ProgressDialog progressBar;
     public ArrayList<Bitmap> bitmaps = new ArrayList<Bitmap>(); //Add your bitmaps from internal or external storage.
     DisplayMetrics mMetrics;
@@ -69,6 +67,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plus);
 
+        view = (RelativeLayout) findViewById(R.id.mainlayout);
         GridView gridview = (GridView) findViewById(R.id.gv_croplist);
         gridview.setAdapter(new PlusActivity.ImageAdapter(this));
         gridview.setOnItemClickListener(gridviewOnItemClickListener);
@@ -140,9 +139,10 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             public void onClick(View v) {
                 turboImageView.deselectAll();
                 Drawable d = getResources().getDrawable(R.drawable.gifimagescene_001_1);
-                RelativeLayout view = (RelativeLayout) findViewById(R.id.mainlayout);
+                //RelativeLayout view = (RelativeLayout) findViewById(R.id.mainlayout);
                 //Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth()/2, d.getIntrinsicHeight()/2, Bitmap.Config.ARGB_8888);
-                Bitmap bitmap = Bitmap.createBitmap(iv_background.getWidth(), iv_background.getHeight(), Bitmap.Config.ARGB_8888);
+                //Bitmap bitmap = Bitmap.createBitmap(iv_background.getWidth(), iv_background.getHeight(), Bitmap.Config.ARGB_8888);
+                Bitmap bitmap = Bitmap.createBitmap(turboImageView.getWidth(), turboImageView.getHeight(), Bitmap.Config.ARGB_8888);
                 //Bitmap bitmap = Bitmap.createBitmap(640, 631, Bitmap.Config.ARGB_8888);
                 Canvas canvas = new Canvas(bitmap);
                 view.draw(canvas);
@@ -167,16 +167,6 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 startActivity(i);
             }
         });
-
-        /*btn_nimoticon = (Button) findViewById(R.id.btn_nimoticon);
-        btn_nimoticon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SelectGifActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });*/
     }
 
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
@@ -265,7 +255,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
 
         String name = "Gif" + CurDateFormat.format(date);
 
-        progressBar = ProgressDialog.show(this, "Converting...", "~3 sec/frame", true, false);
+        progressBar = ProgressDialog.show(this, "변환중..", "~3 sec/frame", true, false);
 
         GifThread gt = new GifThread(name);
         gt.start();
@@ -318,6 +308,13 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 PathClass.now_made_gifroot = PathClass.basicsavegifroot + PathClass.now_made_gifname;
             }
         };
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        btn_addfirst.setBackgroundResource(PathClass.click_gifscene1);
+        btn_addsecond.setBackgroundResource(PathClass.click_gifscene2);
     }
 
     @Override
