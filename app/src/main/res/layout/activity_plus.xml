@@ -107,7 +107,11 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_addgif"
-                        android:ellipsize="middle" />
+                        android:ellipsize="middle"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="7dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -126,7 +130,11 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_addcropped"
-                        android:ellipsize="middle" />
+                        android:ellipsize="middle"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="7dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -145,7 +153,11 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_deletecropped"
-                        android:ellipsize="middle" />
+                        android:ellipsize="middle"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="7dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -196,7 +208,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="160" />
+                        android:layout_weight="260" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -218,7 +230,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="160" />
+                        android:layout_weight="60" />
                 </LinearLayout>
             </LinearLayout>
 

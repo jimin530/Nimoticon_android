@@ -308,6 +308,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
             return;
 
         initPreview();
+        PathClass.clearValue();
     }
 
     @Override

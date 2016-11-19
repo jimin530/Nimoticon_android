@@ -38,5 +38,6 @@ public class PathClass {
         first_scene_number = R.drawable.gifimagescene_001_1;
         PathClass.take_photoroot.clear();
         PathClass.crop_list.clear();
+        PathClass.finish_list.clear();
     }
 }
