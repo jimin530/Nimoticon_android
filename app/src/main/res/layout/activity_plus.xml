@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="709"
+            android:layout_weight="729"
             android:orientation="horizontal"
             android:weightSum="1000">
 
@@ -191,7 +191,35 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="200" />
+                    android:layout_weight="200">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="160" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="680">
+
+                        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/gv_finishlist"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:columnWidth="80dp"
+                            android:gravity="center"
+                            android:horizontalSpacing="5dp"
+                            android:numColumns="auto_fit"
+                            android:stretchMode="spacingWidth"
+                            android:verticalSpacing="10dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="160" />
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -199,13 +227,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="20"
+            android:layout_weight="1"
+            android:background="@android:color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="19"
             android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="150"
+            android:layout_weight="130"
             android:orientation="horizontal"
             android:weightSum="1000">
 
@@ -218,19 +252,22 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="880">
+                android:layout_weight="880"
+                android:orientation="horizontal"
+                android:weightSum="1000">
 
                 <GridView xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/gv_croplist"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="@android:color/black"
-                    android:columnWidth="80dp"
+                    android:columnWidth="70dp"
                     android:gravity="center"
                     android:horizontalSpacing="5dp"
                     android:numColumns="auto_fit"
                     android:stretchMode="spacingWidth"
-                    android:verticalSpacing="10dp" />
+                    android:verticalSpacing="10dp"
+                    android:listSelector="#000000"/>
             </LinearLayout>
 
             <LinearLayout

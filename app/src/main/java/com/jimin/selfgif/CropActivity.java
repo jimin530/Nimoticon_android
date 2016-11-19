@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -37,6 +39,8 @@ public class CropActivity extends Activity {
     LinearLayout ll_crop;
     ImageButton btn_cancel;
     ImageButton btn_next2;
+
+    View tmp_view = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +79,7 @@ public class CropActivity extends Activity {
 
         cropperDrawingView = (CropperDrawingView) findViewById(R.id.cropper_drawing_view);
 
-        Log.d("확인",ll_crop.getWidth() +"   "+ll_crop.getHeight());
+        Log.d("확인", ll_crop.getWidth() + "   " + ll_crop.getHeight());
 
 
         outlineCropper = new OutlineCropper(cropperDrawingView, new CropperCallback() {
@@ -112,6 +116,13 @@ public class CropActivity extends Activity {
 
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            if (tmp_view == null) {
+                tmp_view = arg1;
+            } else {
+                tmp_view.setBackgroundResource(R.drawable.image_basic_border);
+                tmp_view = arg1;
+            }
+            arg1.setBackgroundResource(R.drawable.image_border);
             cropperDrawingView.setImageCrop(BitmapFactory.decodeFile(arg0.getAdapter().getItem(arg2).toString()), ll_crop.getWidth(), ll_crop.getHeight());
         }
     };
@@ -138,7 +149,7 @@ public class CropActivity extends Activity {
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            int rowWidth = (mMetrics.widthPixels) / 4;
+            int rowWidth = (mMetrics.widthPixels) / 6;
 
             ImageView imageView;
             if (convertView == null) {
@@ -146,6 +157,8 @@ public class CropActivity extends Activity {
                 imageView.setLayoutParams(new GridView.LayoutParams(rowWidth, rowWidth));
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                 imageView.setPadding(1, 1, 1, 1);
+                imageView.setBackgroundColor(Color.rgb(255, 255, 255));
+                imageView.setBackgroundResource(R.drawable.image_basic_border);
             } else {
                 imageView = (ImageView) convertView;
             }

@@ -28,6 +28,7 @@ public class PathClass {
     public static String now_take_photoroot;
     public static ArrayList<String> take_photoroot = new ArrayList<>();
     public static ArrayList<Bitmap> crop_list = new ArrayList<>();
+    public static ArrayList<Bitmap> finish_list = new ArrayList<>();
 
     public static boolean fromcamera = true;
 

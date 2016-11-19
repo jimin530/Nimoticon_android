@@ -58,6 +58,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
 
     FrameLayout fl_first;
     FrameLayout fl_second;
+    View tmp_view = null;
 
     private TurboImageView turboImageView;
     ImageView iv_background;
@@ -73,9 +74,9 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         setContentView(R.layout.activity_plus);
 
         view = (RelativeLayout) findViewById(R.id.mainlayout);
-        GridView gridview = (GridView) findViewById(R.id.gv_croplist);
-        gridview.setAdapter(new PlusActivity.ImageAdapter(this));
-        gridview.setOnItemClickListener(gridviewOnItemClickListener);
+        GridView gv_croplist = (GridView) findViewById(R.id.gv_croplist);
+        gv_croplist.setAdapter(new PlusActivity.ImageAdapter(this));
+        gv_croplist.setOnItemClickListener(gv_croplistOnItemClickListener);
 
         mMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
@@ -158,6 +159,11 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 Canvas canvas = new Canvas(bitmap);
                 view.draw(canvas);
                 bitmaps.add(bitmap);
+
+                PathClass.finish_list.add(bitmap);
+                GridView gv_finishlist = (GridView) findViewById(R.id.gv_finishlist);
+                gv_finishlist.setAdapter(new PlusActivity.FinishAdapter(getApplicationContext()));
+                gv_finishlist.setOnItemClickListener(gv_finishlistOnItemClickListener);
             }
         });
 
@@ -180,10 +186,24 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         });
     }
 
-    private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
+    private GridView.OnItemClickListener gv_croplistOnItemClickListener = new GridView.OnItemClickListener() {
 
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            if (tmp_view == null) {
+                tmp_view = arg1;
+            } else {
+                tmp_view.setBackgroundResource(R.drawable.image_basic_border);
+                tmp_view = arg1;
+            }
+            arg1.setBackgroundResource(R.drawable.image_border);
             selected_cropped = (Bitmap) arg0.getAdapter().getItem(arg2);
+        }
+    };
+
+    private GridView.OnItemClickListener gv_finishlistOnItemClickListener = new GridView.OnItemClickListener() {
+
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            //selected_cropped = (Bitmap) arg0.getAdapter().getItem(arg2);
         }
     };
 
@@ -209,7 +229,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            int rowWidth = (mMetrics.widthPixels) / 4;
+            int rowWidth = (mMetrics.widthPixels) / 6;
 
             ImageView imageView;
             if (convertView == null) {
@@ -217,6 +237,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 imageView.setLayoutParams(new GridView.LayoutParams(rowWidth, rowWidth));
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                 imageView.setPadding(1, 1, 1, 1);
+                imageView.setBackgroundColor(Color.rgb(255, 255, 255));
+                imageView.setBackgroundResource(R.drawable.image_basic_border);
             } else {
                 imageView = (ImageView) convertView;
             }
@@ -225,7 +247,47 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             imageView.setImageBitmap(myBitmap);
             return imageView;
         }
+    }
 
+    public class FinishAdapter extends BaseAdapter {
+        private Context mContext;
+
+        public FinishAdapter(Context c) {
+            mContext = c;
+        }
+
+        public int getCount() {
+            return PathClass.finish_list.size();
+        }
+
+        public Object getItem(int position) {
+            return PathClass.finish_list.get(position);
+        }
+
+        public long getItemId(int position) {
+            return position;
+        }
+
+        // create a new ImageView for each item referenced by the Adapter
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            int rowWidth = (mMetrics.widthPixels) / 5;
+
+            ImageView imageView;
+            if (convertView == null) {
+                imageView = new ImageView(mContext);
+                imageView.setLayoutParams(new GridView.LayoutParams(rowWidth, rowWidth));
+                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageView.setPadding(1, 1, 1, 1);
+                imageView.setBackgroundResource(R.drawable.image_border);
+            } else {
+                imageView = (ImageView) convertView;
+            }
+            Bitmap myBitmap = PathClass.finish_list.get(position);
+
+            imageView.setImageBitmap(myBitmap);
+            return imageView;
+        }
     }
 
     @Override
