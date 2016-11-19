@@ -120,7 +120,7 @@
                     android:id="@+id/btn_share"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_share"/>
+                    android:background="@drawable/btn_share2"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -134,7 +134,7 @@
                     android:id="@+id/btn_please"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_please"/>
+                    android:background="@drawable/btn_please2"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"

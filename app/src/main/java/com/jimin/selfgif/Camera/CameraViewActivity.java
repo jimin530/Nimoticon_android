@@ -273,7 +273,14 @@ public class CameraViewActivity extends Activity implements OnClickListener {
     };
 
     private void captureImage() {
-        mCamera.takePicture(mShutterCallback, null, mPicture);
+        mCamera.autoFocus(new Camera.AutoFocusCallback() {
+
+            public void onAutoFocus(boolean success, Camera camera) {
+                if (success) {
+                    mCamera.takePicture(mShutterCallback, null, mPicture);
+                }
+            }
+        });
     }
 
     @Override
@@ -320,7 +327,5 @@ public class CameraViewActivity extends Activity implements OnClickListener {
         } else if (id == R.id.btn_capture) {
             captureImage();
         }
-
     }
-
 }
