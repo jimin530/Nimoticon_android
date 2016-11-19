@@ -11,143 +11,191 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"/>
+            android:layout_weight="10" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="709"
             android:orientation="horizontal"
             android:weightSum="1000">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="15" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="140"
                 android:orientation="vertical"
                 android:weightSum="1000">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="140">
-                    <Button
-                        android:id="@+id/btn_addfirst"
+
+                    <FrameLayout
+                        android:id="@+id/fl_first"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:ellipsize="middle"
-                        />
+                        android:padding="1sp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"
+                            android:ellipsize="middle"
+                            android:padding="10sp" />
+
+                        <Button
+                            android:id="@+id/btn_addfirst"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ellipsize="middle"
+                            android:padding="10sp" />
+                    </FrameLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="20"/>
+                    android:layout_weight="20" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="140">
-                    <Button
-                        android:id="@+id/btn_addsecond"
+
+                    <FrameLayout
+                        android:id="@+id/fl_second"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:ellipsize="middle"
-                        />
+                        android:padding="1sp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"
+                            android:ellipsize="middle"
+                            android:padding="10sp" />
+
+                        <Button
+                            android:id="@+id/btn_addsecond"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ellipsize="middle"
+                            android:padding="10sp" />
+                    </FrameLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="20"/>
+                    android:layout_weight="20" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="105">
+
                     <ImageButton
                         android:id="@+id/btn_addgif"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:ellipsize="middle"
                         android:background="@drawable/btn_addgif"
-                        />
+                        android:ellipsize="middle" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="345"/>
+                    android:layout_weight="335" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="105">
+
                     <ImageButton
                         android:id="@+id/btn_addcropped"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:ellipsize="middle"
                         android:background="@drawable/btn_addcropped"
-                        />
+                        android:ellipsize="middle" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="10"/>
+                    android:layout_weight="20" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="105">
+
                     <ImageButton
                         android:id="@+id/btn_deletecropped"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:ellipsize="middle"
                         android:background="@drawable/btn_deletecropped"
-                        />
+                        android:ellipsize="middle" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="10"/>
+                    android:layout_weight="10" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="80" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="765"
                 android:orientation="vertical"
                 android:weightSum="1000">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="200"/>
+                    android:layout_weight="200" />
+
                 <RelativeLayout
                     android:id="@+id/mainlayout"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="600">
+
                     <ImageView
                         android:id="@+id/iv_background"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        />
+                        android:layout_height="match_parent" />
 
                     <com.munon.turboimageview.TurboImageView
                         android:id="@+id/turboImageView"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        />
+                        android:layout_height="match_parent" />
                 </RelativeLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="200"/>
+                    android:layout_weight="200" />
             </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -202,7 +250,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/white"/>
+            android:background="@android:color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -214,13 +262,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="50"
+            android:background="@android:color/black"
             android:orientation="horizontal"
-            android:weightSum="1000"
-            android:background="@android:color/black">
+            android:weightSum="1000">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="85" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -231,62 +281,68 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:ellipsize="middle"
                     android:background="@drawable/btn_emoticon"
-                    />
+                    android:ellipsize="middle" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="170" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="80">
+
                 <ImageButton
                     android:id="@+id/btn_flip"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:ellipsize="middle"
                     android:background="@drawable/btn_flip"
-                    />
+                    android:ellipsize="middle" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="170" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="80">
+
                 <ImageButton
                     android:id="@+id/btn_send"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:ellipsize="middle"
                     android:background="@drawable/btn_send"
-                    />
+                    android:ellipsize="middle" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="170" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="80">
+
                 <ImageButton
                     android:id="@+id/btn_share"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:ellipsize="middle"
-                    android:visibility="visible"
                     android:background="@drawable/btn_share"
-                    />
+                    android:ellipsize="middle"
+                    android:visibility="visible" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

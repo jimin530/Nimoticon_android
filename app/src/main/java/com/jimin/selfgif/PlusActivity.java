@@ -9,6 +9,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -54,6 +56,9 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
     ImageButton btn_send;
     ImageButton btn_selectemoticon;
 
+    FrameLayout fl_first;
+    FrameLayout fl_second;
+
     private TurboImageView turboImageView;
     ImageView iv_background;
     RelativeLayout view;
@@ -79,6 +84,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
         turboImageView.setListener(this);
 
         iv_background = (ImageView) findViewById(R.id.iv_background);
+        fl_first = (FrameLayout) findViewById(R.id.fl_first);
+        fl_second = (FrameLayout) findViewById(R.id.fl_second);
 
         btn_addcropped = (ImageButton) findViewById(R.id.btn_addcropped);
         btn_addcropped.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +128,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             public void onClick(View v) {
                 iv_background.bringToFront();
                 iv_background.setImageResource(PathClass.click_gifscene1);
+                fl_first.setBackgroundColor(Color.rgb(86, 194, 186));
+                fl_second.setBackgroundColor(Color.rgb(255, 255, 255));
             }
         });
 
@@ -130,6 +139,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             public void onClick(View v) {
                 iv_background.bringToFront();
                 iv_background.setImageResource(PathClass.click_gifscene2);
+                fl_first.setBackgroundColor(Color.rgb(255, 255, 255));
+                fl_second.setBackgroundColor(Color.rgb(86, 194, 186));
             }
         });
 
