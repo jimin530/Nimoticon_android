@@ -93,6 +93,9 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             @Override
             public void onClick(View v) {
                 turboImageView.addObject(PlusActivity.this, selected_cropped);
+
+                btn_addcropped.setBackgroundResource(R.drawable.btn_addcropped_bef);
+                btn_deletecropped.setBackgroundResource(R.drawable.btn_deletecropped);
             }
         });
         btn_deletecropped = (ImageButton) findViewById(R.id.btn_deletecropped);
@@ -100,6 +103,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             @Override
             public void onClick(View v) {
                 turboImageView.removeSelectedObject();
+                btn_deletecropped.setBackgroundResource(R.drawable.btn_deletecropped_bef);
+                tmp_view.setBackgroundResource(R.drawable.image_basic_border);
             }
         });
 
@@ -197,6 +202,9 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
             arg1.setBackgroundResource(R.drawable.image_border);
             selected_cropped = (Bitmap) arg0.getAdapter().getItem(arg2);
+
+            btn_addcropped.setBackgroundResource(R.drawable.btn_addcropped);
+            btn_deletecropped.setBackgroundResource(R.drawable.btn_deletecropped_bef);
         }
     };
 

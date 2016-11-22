@@ -18,6 +18,7 @@ import android.view.View;
 import com.maker.outlinecropperlib.Models.CropPoint;
 import com.maker.outlinecropperlib.R;
 
+
 import java.util.ArrayList;
 
 /**
@@ -162,7 +163,7 @@ public class CropperDrawingView extends View {
             matrixDraw.clear();
             matrixDraw = null;
         }
-
+        //Log.d("확인","여긴가");
         dropCanvas(getWidth(), getHeight());
 
         addToMatrixCrop(x, y);

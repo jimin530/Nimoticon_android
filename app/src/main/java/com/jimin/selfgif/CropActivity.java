@@ -39,6 +39,7 @@ public class CropActivity extends Activity {
     LinearLayout ll_crop;
     ImageButton btn_cancel;
     ImageButton btn_next2;
+    public static ImageButton btnCrop;
 
     View tmp_view = null;
 
@@ -79,9 +80,6 @@ public class CropActivity extends Activity {
 
         cropperDrawingView = (CropperDrawingView) findViewById(R.id.cropper_drawing_view);
 
-        Log.d("확인", ll_crop.getWidth() + "   " + ll_crop.getHeight());
-
-
         outlineCropper = new OutlineCropper(cropperDrawingView, new CropperCallback() {
             @Override
             public void onCropStart() {
@@ -103,7 +101,7 @@ public class CropActivity extends Activity {
             }
         });
 
-        ImageButton btnCrop = (ImageButton) findViewById(R.id.btn_crop);
+        btnCrop = (ImageButton) findViewById(R.id.btn_crop);
         btnCrop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,7 +156,7 @@ public class CropActivity extends Activity {
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                 imageView.setPadding(1, 1, 1, 1);
                 imageView.setBackgroundColor(Color.rgb(255, 255, 255));
-                imageView.setBackgroundResource(R.drawable.image_basic_border);
+                //imageView.setBackgroundResource(R.drawable.image_basic_border);
             } else {
                 imageView = (ImageView) convertView;
             }

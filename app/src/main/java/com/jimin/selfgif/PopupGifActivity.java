@@ -39,10 +39,10 @@ public class PopupGifActivity extends Activity {
                 PathClass.click_gifscene1 = PathClass.first_scene_number + 2 * (PathClass.click_gifresource - PathClass.first_resource_number);
                 PathClass.click_gifscene2 = PathClass.click_gifscene1 + 1;
 
-                if (PathClass.fromcamera) {
+                /*if (PathClass.fromcamera) {
                     Intent i = new Intent(getApplicationContext(), CameraViewActivity.class);
                     startActivity(i);
-                }
+                }*/
                 finish();
             }
         });
