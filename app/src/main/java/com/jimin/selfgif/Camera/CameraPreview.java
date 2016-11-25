@@ -22,8 +22,6 @@ public class CameraPreview extends SurfaceView implements
     List<Size> mSupportedPreviewSizes;
 
 
-
-
     @SuppressWarnings("deprecation")
     public CameraPreview(Context context, Camera camera) {
         super(context);

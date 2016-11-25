@@ -1,14 +1,11 @@
 package com.jimin.selfgif;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.jimin.selfgif.Camera.CameraViewActivity;
 import com.jimin.selfgif.SaveGif.AnimatedGifImageView;
 import com.jimin.selfgif.SaveGif.AnimatedGifImageView.TYPE;
 

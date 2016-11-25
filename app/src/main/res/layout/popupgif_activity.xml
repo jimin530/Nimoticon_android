@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="10"
-            android:background="#57c3bb"/>
+            android:background="#57c3bb" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,16 +22,18 @@
             android:layout_weight="860"
             android:orientation="horizontal"
             android:weightSum="1000">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="15"
-                android:background="#57c3bb"/>
+                android:background="#57c3bb" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="970">
+
                 <com.jimin.selfgif.SaveGif.AnimatedGifImageView
                     android:id="@+id/animatedGifImageView"
                     android:layout_width="match_parent"
@@ -39,11 +41,12 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="15"
-                android:background="#57c3bb"/>
+                android:background="#57c3bb" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,20 +55,23 @@
             android:layout_weight="20"
             android:orientation="horizontal"
             android:weightSum="1000">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="15"
-                android:background="#57c3bb"/>
+                android:background="#57c3bb" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="970"/>
+                android:layout_weight="970" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="15"
-                android:background="#57c3bb"/>
+                android:background="#57c3bb" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,61 +80,72 @@
             android:layout_weight="80"
             android:orientation="horizontal"
             android:weightSum="1000">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="390"
                 android:orientation="horizontal"
                 android:weightSum="1000">
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="37.5"
-                    android:background="#57c3bb"/>
+                    android:background="#57c3bb" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="962.5"/>
+                    android:layout_weight="962.5" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="100">
+
                 <ImageButton
                     android:id="@+id/btn_selectimg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_select_pressed"/>
+                    android:background="@drawable/btn_select_pressed" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="100">
+
                 <ImageButton
                     android:id="@+id/btn_please"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_please_pressed"/>
+                    android:background="@drawable/btn_please_pressed" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="390"
                 android:orientation="horizontal"
                 android:weightSum="1000">
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="962.5"/>
+                    android:layout_weight="962.5" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="37.5"
-                    android:background="#57c3bb"/>
+                    android:background="#57c3bb" />
             </LinearLayout>
 
         </LinearLayout>
@@ -139,27 +156,30 @@
             android:layout_weight="20"
             android:orientation="horizontal"
             android:weightSum="1000">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="15"
-                android:background="#57c3bb"/>
+                android:background="#57c3bb" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="970"/>
+                android:layout_weight="970" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="15"
-                android:background="#57c3bb"/>
+                android:background="#57c3bb" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="10"
-            android:background="#57c3bb"/>
+            android:background="#57c3bb" />
 
 
     </LinearLayout>

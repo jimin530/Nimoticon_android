@@ -32,8 +32,7 @@ public class PathClass {
 
     public static boolean fromcamera = true;
 
-    public static void clearValue()
-    {
+    public static void clearValue() {
         first_resource_number = R.drawable.gifimage_001;
         first_scene_number = R.drawable.gifimagescene_001_1;
         PathClass.take_photoroot.clear();

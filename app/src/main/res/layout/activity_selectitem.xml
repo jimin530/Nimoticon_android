@@ -21,6 +21,9 @@
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_weight="940"
         android:columnWidth="90dp"
         android:gravity="center"
@@ -28,9 +31,6 @@
         android:listSelector="#ffffff"
         android:numColumns="auto_fit"
         android:stretchMode="spacingWidth"
-        android:verticalSpacing="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:verticalSpacing="10dp" />
 
 </LinearLayout>

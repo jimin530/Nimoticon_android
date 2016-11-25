@@ -10,17 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="30"
-        android:background="@android:color/black"/>
+        android:background="@android:color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="30"/>
+        android:layout_weight="30" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="840" >
+        android:layout_weight="840">
 
         <GridView
             android:id="@+id/gridGallery"
@@ -32,12 +32,11 @@
             android:layout_marginRight="-10dp"
             android:layout_marginTop="-10dp"
             android:horizontalSpacing="-15dp"
+            android:listSelector="#00ff0000"
             android:numColumns="3"
             android:padding="0dp"
             android:verticalSpacing="-15dp"
-            tools:listitem="@layout/gallery_item"
-            android:listSelector="#00ff0000">
-        </GridView>
+            tools:listitem="@layout/gallery_item"></GridView>
 
         <ImageView
             android:id="@+id/imgNoMedia"
@@ -51,7 +50,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="20"/>
+        android:layout_weight="20" />
 
     <LinearLayout
         android:id="@+id/llBottomContainer"
@@ -60,31 +59,33 @@
         android:layout_weight="60"
         android:orientation="horizontal"
         android:weightSum="1000">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="445"/>
+            android:layout_weight="445" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="110">
+
             <ImageButton
                 android:id="@+id/btnGalleryOk"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_selectimg"/>
+                android:background="@drawable/btn_selectimg" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="445"/>
+            android:layout_weight="445" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="20"/>
+        android:layout_weight="20" />
 
 </LinearLayout>

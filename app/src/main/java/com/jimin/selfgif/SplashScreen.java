@@ -15,7 +15,7 @@ import com.jimin.selfgif.Camera.CameraViewActivity;
 public class SplashScreen extends Activity {
 
     // Splash screen timer
-    private static int SPLASH_TIME_OUT = 10000;
+    private static int SPLASH_TIME_OUT = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +25,17 @@ public class SplashScreen extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             request_camera();
         }
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i = new Intent(SplashScreen.this, CameraViewActivity.class);
-                startActivity(i);
-                finish();
-            }
-        }, SPLASH_TIME_OUT);
+        else
+        {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent i = new Intent(SplashScreen.this, CameraViewActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            }, SPLASH_TIME_OUT);
+        }
     }
 
     @Override
@@ -42,7 +44,6 @@ public class SplashScreen extends Activity {
         switch (requestCode) {
             case 1: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // 권한 동의한 경우
                     request_read_external_storage();
                 } else {
                     // 사용자가 권한 동의를 안하므로 종료
@@ -52,43 +53,14 @@ public class SplashScreen extends Activity {
             case 2: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 권한 동의한 경우
-                    request_write_external_storage();
-                } else {
-                    // 사용자가 권한 동의를 안하므로 종료
-                    finish();
-                }
-            }
-            case 3: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // 권한 동의한 경우
-                    //request_internet();
-                } else {
-                    // 사용자가 권한 동의를 안하므로 종료
-                    finish();
-                }
-            }
-            case 4: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // 권한 동의한 경우
-                    //request_record_audio();
-                } else {
-                    // 사용자가 권한 동의를 안하므로 종료
-                    finish();
-                }
-            }
-            case 5: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // 권한 동의한 경우
-                    //request_call_phone();
-                } else {
-                    // 사용자가 권한 동의를 안하므로 종료
-                    finish();
-                }
-            }
-            case 6: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // 권한 동의한 경우
-                    //request_read_phone_state();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent i = new Intent(SplashScreen.this, CameraViewActivity.class);
+                            startActivity(i);
+                            finish();
+                        }
+                    }, SPLASH_TIME_OUT);
                 } else {
                     // 사용자가 권한 동의를 안하므로 종료
                     finish();
@@ -110,7 +82,10 @@ public class SplashScreen extends Activity {
                 //최초로 권한을 요청하는 경우(첫실행)
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
             }
+        } else {
+            request_read_external_storage();
         }
+
     }
 
     public void request_read_external_storage() {
@@ -126,86 +101,15 @@ public class SplashScreen extends Activity {
                 //최초로 권한을 요청하는 경우(첫실행)
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 2);
             }
-        }
-    }
-
-    public void request_write_external_storage() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            //권한이 없을 경우
-
-            //최초 권한 요청인지 혹은 사용자에 의한 재요청인지 확인
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                //사용자가 임의로 권한을 취소시킨 경우
-                //권한 재요청
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
-            } else {
-                //최초로 권한을 요청하는 경우(첫실행)
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
-            }
-        }
-    }
-
-    public void request_internet() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
-            //권한이 없을 경우
-
-            //최초 권한 요청인지 혹은 사용자에 의한 재요청인지 확인
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.INTERNET)) {
-                //사용자가 임의로 권한을 취소시킨 경우
-                //권한 재요청
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 4);
-            } else {
-                //최초로 권한을 요청하는 경우(첫실행)
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 4);
-            }
-        }
-    }
-
-    public void request_record_audio() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-            //권한이 없을 경우
-
-            //최초 권한 요청인지 혹은 사용자에 의한 재요청인지 확인
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO)) {
-                //사용자가 임의로 권한을 취소시킨 경우
-                //권한 재요청
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 5);
-            } else {
-                //최초로 권한을 요청하는 경우(첫실행)
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 5);
-            }
-        }
-    }
-
-    public void request_call_phone() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            //권한이 없을 경우
-
-            //최초 권한 요청인지 혹은 사용자에 의한 재요청인지 확인
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
-                //사용자가 임의로 권한을 취소시킨 경우
-                //권한 재요청
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 6);
-            } else {
-                //최초로 권한을 요청하는 경우(첫실행)
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 6);
-            }
-        }
-    }
-
-    public void request_read_phone_state() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            //권한이 없을 경우
-
-            //최초 권한 요청인지 혹은 사용자에 의한 재요청인지 확인
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_PHONE_STATE)) {
-                //사용자가 임의로 권한을 취소시킨 경우
-                //권한 재요청
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, 7);
-            } else {
-                //최초로 권한을 요청하는 경우(첫실행)
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, 7);
-            }
+        } else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent i = new Intent(SplashScreen.this, CameraViewActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            }, SPLASH_TIME_OUT);
         }
     }
 }
