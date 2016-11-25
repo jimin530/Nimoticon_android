@@ -43,10 +43,10 @@
                     android:background="@drawable/btn_inform"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginBottom="-3dp"
+                    android:layout_marginLeft="-3dp"
+                    android:layout_marginRight="-3dp"
+                    android:layout_marginTop="-3dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -61,10 +61,10 @@
                     android:background="@drawable/btn_transition"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginBottom="-3dp"
+                    android:layout_marginLeft="-3dp"
+                    android:layout_marginRight="-3dp"
+                    android:layout_marginTop="-3dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -97,10 +97,10 @@
                     android:background="@drawable/btn_emoticon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_marginTop="3dp"/>
+                    android:layout_marginBottom="-4dp"
+                    android:layout_marginLeft="-4dp"
+                    android:layout_marginRight="-4dp"
+                    android:layout_marginTop="-4dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -115,10 +115,10 @@
                     android:background="@drawable/btn_album"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_marginTop="3dp"/>
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginLeft="-2dp"
+                    android:layout_marginRight="-2dp"
+                    android:layout_marginTop="-2dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -173,10 +173,10 @@
                         android:background="@drawable/btn_storage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="1dp"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginTop="3dp"/>
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="-1dp"
+                        android:layout_marginRight="-1dp"
+                        android:layout_marginTop="0dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -228,10 +228,10 @@
                         android:background="@drawable/btn_next1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:layout_marginTop="3dp"/>
+                        android:layout_marginBottom="-2dp"
+                        android:layout_marginLeft="-2dp"
+                        android:layout_marginRight="-2dp"
+                        android:layout_marginTop="-2dp"/>
                 </LinearLayout>
 
                 <LinearLayout

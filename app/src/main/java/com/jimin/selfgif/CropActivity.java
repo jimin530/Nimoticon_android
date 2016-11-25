@@ -7,22 +7,17 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.jimin.selfgif.Camera.CameraViewActivity;
 import com.maker.outlinecropperlib.Interfaces.CropperCallback;
@@ -76,7 +71,7 @@ public class CropActivity extends Activity {
         btn_next2.setEnabled(false);
 
         pd = new ProgressDialog(this);
-        pd.setMessage("처리중..");
+        pd.setMessage("Cutting..");
 
         cropperDrawingView = (CropperDrawingView) findViewById(R.id.cropper_drawing_view);
 
@@ -114,6 +109,7 @@ public class CropActivity extends Activity {
 
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            btnCrop.setBackgroundResource(R.drawable.btn_crop);
             if (tmp_view == null) {
                 tmp_view = arg1;
             } else {

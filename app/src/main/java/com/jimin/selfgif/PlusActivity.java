@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -94,8 +95,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             public void onClick(View v) {
                 turboImageView.addObject(PlusActivity.this, selected_cropped);
 
-                btn_addcropped.setBackgroundResource(R.drawable.btn_addcropped_bef);
-                btn_deletecropped.setBackgroundResource(R.drawable.btn_deletecropped);
+                /*btn_addcropped.setBackgroundResource(R.drawable.btn_addcropped_bef);
+                btn_deletecropped.setBackgroundResource(R.drawable.btn_deletecropped);*/
             }
         });
         btn_deletecropped = (ImageButton) findViewById(R.id.btn_deletecropped);
@@ -133,7 +134,13 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             @Override
             public void onClick(View v) {
                 iv_background.bringToFront();
-                iv_background.setImageResource(PathClass.click_gifscene1);
+
+                BitmapDrawable scene1 = (BitmapDrawable) getResources().getDrawable(PathClass.click_gifscene1);
+                Bitmap b_scene1 = scene1.getBitmap();
+                Bitmap re_b_scene1 = Bitmap.createScaledBitmap(b_scene1, iv_background.getWidth(), iv_background.getHeight(), false);
+
+                //iv_background.setImageResource(PathClass.click_gifscene1);
+                iv_background.setImageBitmap(re_b_scene1);
                 fl_first.setBackgroundColor(Color.rgb(86, 194, 186));
                 fl_second.setBackgroundColor(Color.rgb(255, 255, 255));
             }
@@ -144,7 +151,13 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             @Override
             public void onClick(View v) {
                 iv_background.bringToFront();
-                iv_background.setImageResource(PathClass.click_gifscene2);
+
+                BitmapDrawable scene2 = (BitmapDrawable) getResources().getDrawable(PathClass.click_gifscene2);
+                Bitmap b_scene2 = scene2.getBitmap();
+                Bitmap re_b_scene2 = Bitmap.createScaledBitmap(b_scene2, iv_background.getWidth(), iv_background.getHeight(), false);
+
+                //iv_background.setImageResource(PathClass.click_gifscene2);
+                iv_background.setImageBitmap(re_b_scene2);
                 fl_first.setBackgroundColor(Color.rgb(255, 255, 255));
                 fl_second.setBackgroundColor(Color.rgb(86, 194, 186));
             }
@@ -200,11 +213,11 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 tmp_view.setBackgroundResource(R.drawable.image_basic_border);
                 tmp_view = arg1;
             }
-            arg1.setBackgroundResource(R.drawable.image_border);
+            arg1.setBackgroundResource(R.drawable.image_border2);
             selected_cropped = (Bitmap) arg0.getAdapter().getItem(arg2);
 
-            btn_addcropped.setBackgroundResource(R.drawable.btn_addcropped);
-            btn_deletecropped.setBackgroundResource(R.drawable.btn_deletecropped_bef);
+            /*btn_addcropped.setBackgroundResource(R.drawable.btn_addcropped);
+            btn_deletecropped.setBackgroundResource(R.drawable.btn_deletecropped_bef);*/
         }
     };
 
@@ -287,7 +300,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 imageView.setLayoutParams(new GridView.LayoutParams(rowWidth, rowWidth));
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                 imageView.setPadding(1, 1, 1, 1);
-                imageView.setBackgroundResource(R.drawable.image_border);
+                imageView.setBackgroundResource(R.drawable.image_border3);
             } else {
                 imageView = (ImageView) convertView;
             }
@@ -336,7 +349,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
 
         String name = "Gif" + CurDateFormat.format(date);
 
-        progressBar = ProgressDialog.show(this, "변환중..", "~3 sec/frame", true, false);
+        progressBar = ProgressDialog.show(this, "Converting..", "~3 sec/frame", true, false);
 
         GifThread gt = new GifThread(name);
         gt.start();

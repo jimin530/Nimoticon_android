@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
-    android:layout_height="350dp"
+    android:layout_width="250dp"
+    android:layout_height="320dp"
     android:background="@drawable/ins_shape">
 
     <LinearLayout
@@ -15,32 +15,12 @@
             android:layout_height="0dp"
             android:layout_weight="10"
             android:background="#57c3bb"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="60"
-            android:orientation="horizontal"
-            android:weightSum="1000">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="15"
-                android:background="#57c3bb"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="970"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="15"
-                android:background="#57c3bb"/>
-        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="800"
+            android:layout_weight="860"
             android:orientation="horizontal"
             android:weightSum="1000">
             <LinearLayout

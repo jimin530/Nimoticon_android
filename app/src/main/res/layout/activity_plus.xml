@@ -129,7 +129,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/btn_addcropped_bef"
+                        android:background="@drawable/btn_addcropped"
                         android:ellipsize="middle"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
@@ -152,7 +152,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/btn_deletecropped_bef"
+                        android:background="@drawable/btn_deletecropped"
                         android:ellipsize="middle"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
@@ -181,7 +181,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="100" />
+                    android:layout_weight="130" />
 
                 <RelativeLayout
                     android:id="@+id/mainlayout"
@@ -203,7 +203,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="100" />
+                    android:layout_weight="70" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -213,7 +213,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="260" />
+                        android:layout_weight="320" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -235,7 +235,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="60" />
+                        android:layout_weight="40" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -337,7 +337,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_emoticon"
+                    android:background="@drawable/btn_emoticon2"
                     android:ellipsize="middle"
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="5dp"

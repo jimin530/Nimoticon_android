@@ -26,7 +26,7 @@ public class PopupGifActivity extends Activity {
         setContentView(R.layout.popupgif_activity);
         animatedGifImageView = ((AnimatedGifImageView) findViewById(R.id.animatedGifImageView));
         try {
-            animatedGifImageView.setAnimatedGif(PathClass.click_gifresource, TYPE.FIT_CENTER);
+            animatedGifImageView.setAnimatedGif(PathClass.click_gifresource, TYPE.STREACH_TO_FIT);
         } catch (Exception e) {
 
         }
