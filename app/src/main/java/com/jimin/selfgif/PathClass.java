@@ -20,8 +20,8 @@ public class PathClass {
     public static int first_scene_number = R.drawable.gifimagescene_001_1;
     public static String click_makegifroot;
     public static String basicroot = Environment.getExternalStorageDirectory().toString() + "/Nimoticon/";
-    public static String basicsavegifroot = Environment.getExternalStorageDirectory().toString() + "/Nimoticon/SaveGif/";
-    public static String basicsavephotoroot = Environment.getExternalStorageDirectory().toString() + "/Nimoticon/SavePhoto/";
+    public static String basicsavegifroot = Environment.getExternalStorageDirectory().toString() + "/Nimoticon/NimoticonGif/";
+    public static String basicsavephotoroot = Environment.getExternalStorageDirectory().toString() + "/Nimoticon/NimoticonPhoto/";
     public static String now_made_gifname;
     public static String now_made_gifroot;
     public static String now_take_photoname;

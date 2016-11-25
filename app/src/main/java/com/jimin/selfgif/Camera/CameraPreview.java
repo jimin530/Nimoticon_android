@@ -21,6 +21,9 @@ public class CameraPreview extends SurfaceView implements
     Size mPreviewSize;
     List<Size> mSupportedPreviewSizes;
 
+
+
+
     @SuppressWarnings("deprecation")
     public CameraPreview(Context context, Camera camera) {
         super(context);
@@ -33,8 +36,13 @@ public class CameraPreview extends SurfaceView implements
         // deprecated setting, but required on Android versions prior to 3.0
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
-        mSupportedPreviewSizes = mCamera.getParameters()
-                .getSupportedPreviewSizes();
+        mSupportedPreviewSizes = mCamera.getParameters().getSupportedPreviewSizes();
+
+        /*for(int i=0;i<mSupportedPreviewSizes.size();i++)
+        {
+            Size sss = mSupportedPreviewSizes.get(i);
+            Log.d("확인 : ",sss.width+"/"+sss.height+"\n");
+        }*/
 
         setIfAutoFocusSupported();
     }
@@ -45,7 +53,8 @@ public class CameraPreview extends SurfaceView implements
             return;
 
         Camera.Parameters parameters = mCamera.getParameters();
-        parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
+        //parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
+        parameters.setPreviewSize(mSupportedPreviewSizes.get(0).width, mSupportedPreviewSizes.get(0).height);
 
         mCamera.setParameters(parameters);
         mCamera.startPreview();
@@ -124,7 +133,8 @@ public class CameraPreview extends SurfaceView implements
             mCamera.setPreviewDisplay(mHolder);
 
             Parameters params = mCamera.getParameters();
-            params.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
+            //params.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
+            params.setPreviewSize(mSupportedPreviewSizes.get(0).width, mSupportedPreviewSizes.get(0).height);
             mCamera.setParameters(params);
             mCamera.startPreview();
 

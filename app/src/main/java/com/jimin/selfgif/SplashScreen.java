@@ -15,7 +15,7 @@ import com.jimin.selfgif.Camera.CameraViewActivity;
 public class SplashScreen extends Activity {
 
     // Splash screen timer
-    private static int SPLASH_TIME_OUT = 2000;
+    private static int SPLASH_TIME_OUT = 10000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class SplashScreen extends Activity {
             case 3: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 권한 동의한 경우
-                    request_internet();
+                    //request_internet();
                 } else {
                     // 사용자가 권한 동의를 안하므로 종료
                     finish();
@@ -70,7 +70,7 @@ public class SplashScreen extends Activity {
             case 4: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 권한 동의한 경우
-                    request_record_audio();
+                    //request_record_audio();
                 } else {
                     // 사용자가 권한 동의를 안하므로 종료
                     finish();
@@ -79,7 +79,7 @@ public class SplashScreen extends Activity {
             case 5: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 권한 동의한 경우
-                    request_call_phone();
+                    //request_call_phone();
                 } else {
                     // 사용자가 권한 동의를 안하므로 종료
                     finish();
@@ -88,7 +88,7 @@ public class SplashScreen extends Activity {
             case 6: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 권한 동의한 경우
-                    request_read_phone_state();
+                    //request_read_phone_state();
                 } else {
                     // 사용자가 권한 동의를 안하므로 종료
                     finish();

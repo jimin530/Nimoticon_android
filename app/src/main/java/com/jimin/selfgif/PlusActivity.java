@@ -44,6 +44,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static java.lang.System.out;
+
 
 public class PlusActivity extends Activity implements TurboImageViewListener {
 
@@ -168,12 +170,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             @Override
             public void onClick(View v) {
                 turboImageView.deselectAll();
-                Drawable d = getResources().getDrawable(R.drawable.gifimagescene_001_1);
-                //RelativeLayout view = (RelativeLayout) findViewById(R.id.mainlayout);
-                //Bitmap bitmap = Bitmap.createBitmap(d.getIntrinsicWidth()/2, d.getIntrinsicHeight()/2, Bitmap.Config.ARGB_8888);
-                //Bitmap bitmap = Bitmap.createBitmap(iv_background.getWidth(), iv_background.getHeight(), Bitmap.Config.ARGB_8888);
                 Bitmap bitmap = Bitmap.createBitmap(turboImageView.getWidth(), turboImageView.getHeight(), Bitmap.Config.ARGB_8888);
-                //Bitmap bitmap = Bitmap.createBitmap(640, 631, Bitmap.Config.ARGB_8888);
+                bitmap.eraseColor(Color.WHITE);
                 Canvas canvas = new Canvas(bitmap);
                 view.draw(canvas);
                 bitmaps.add(bitmap);
@@ -305,7 +303,6 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 imageView = (ImageView) convertView;
             }
             Bitmap myBitmap = PathClass.finish_list.get(position);
-
             imageView.setImageBitmap(myBitmap);
             return imageView;
         }
@@ -364,7 +361,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
 
         @Override
         public void run() {
-            File myDir = new File(PathClass.basicroot + "SaveGif/");
+            File myDir = new File(PathClass.basicsavegifroot);
             if (!myDir.exists())
                 myDir.mkdirs();
             String fname = name;
@@ -380,7 +377,6 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 gifs.setDelay(500); //프레임 당 딜레이
                 gifs.setRepeat(0);
                 gifs.setQuality(10); //10이 디폴트, 1이 최상, 20이  최하
-                //gifs.setTransparent(new Color());
 
                 for (int i = 0; i < bitmaps.size(); i++) {
                     gifs.addFrame(bitmaps.get(i));

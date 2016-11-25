@@ -19,29 +19,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="60"
-            android:orientation="horizontal"
-            android:weightSum="1000">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="15"
-                android:background="#57c3bb"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="970"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="15"
-                android:background="#57c3bb"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="800"
+            android:layout_weight="860"
             android:orientation="horizontal"
             android:weightSum="1000">
             <LinearLayout
@@ -99,7 +77,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="400"
+                android:layout_weight="390"
                 android:orientation="horizontal"
                 android:weightSum="1000">
                 <LinearLayout
@@ -115,7 +93,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="90">
+                android:layout_weight="100">
                 <ImageButton
                     android:id="@+id/btn_selectimg"
                     android:layout_width="match_parent"
@@ -129,7 +107,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="90">
+                android:layout_weight="100">
                 <ImageButton
                     android:id="@+id/btn_please"
                     android:layout_width="match_parent"
@@ -139,7 +117,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="400"
+                android:layout_weight="390"
                 android:orientation="horizontal"
                 android:weightSum="1000">
                 <LinearLayout

@@ -188,7 +188,7 @@ public class SelectGifActivity extends Activity {
 
                     item.sdcardPath = imagecursor.getString(dataColumnIndex);
 
-                    if (item.sdcardPath.toString().contains("Nimoticon/SaveGif"))
+                    if (item.sdcardPath.toString().contains("Nimoticon/NimoticonGif"))
                         galleryList.add(item);
                 }
             }
