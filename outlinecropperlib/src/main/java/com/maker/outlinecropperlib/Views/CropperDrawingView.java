@@ -83,15 +83,17 @@ public class CropperDrawingView extends View {
 
         Log.d(TAG, String.format("START ### w: %d | h: %d | imgW: %d | imgH: %d", width, height, imgWidth, imgHeight));
 
-        if (isPortrait()) {
-            /*double dif = (imgWidth > width) ? (((double) imgWidth) / ((double) width)) : (((double) width) / ((double) imgWidth));
-            height = (int) (((double) imgHeight) / dif);*/
+        /*if (isPortrait()) {
+            *//*double dif = (imgWidth > width) ? (((double) imgWidth) / ((double) width)) : (((double) width) / ((double) imgWidth));
+            height = (int) (((double) imgHeight) / dif);*//*
             final_w = w;
             final_h = h;
         } else {
             final_w = w;
             final_h = h*imageCrop.getHeight()/imageCrop.getWidth();
-        }
+        }*/
+        final_w = w;
+        final_h = h;
 
         Log.d(TAG, String.format("RESULT ### w: %d | h: %d | imgW: %d | imgH: %d", width, height, imgWidth, imgHeight));
 

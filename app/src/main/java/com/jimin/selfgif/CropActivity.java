@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +34,32 @@ public class CropActivity extends Activity {
     private ProgressDialog pd;
 
     DisplayMetrics mMetrics;
+
+    LinearLayout left_ll_crop;
     LinearLayout ll_crop;
+    LinearLayout right_ll_crop;
+    LinearLayout top_ll_crop;
+    LinearLayout bottom_ll_crop;
+    LinearLayout center_ll_crop;
+
+    LinearLayout.LayoutParams left_params;
+    LinearLayout.LayoutParams ll_crop_params;
+    LinearLayout.LayoutParams right_params;
+    LinearLayout.LayoutParams top_params;
+    LinearLayout.LayoutParams center_params;
+    LinearLayout.LayoutParams bottom_params;
+
+    float first_window_width = 0;
+    float first_window_height = 0;
+
+    float window_width = 0;
+    float window_height = 0;
+    float rate_window_width = 0;
+    float rate_window_height = 0;
+
+    AdapterView<?> tmp_arg0;
+    int tmp_arg2;
+
     ImageButton btn_cancel;
     ImageButton btn_next2;
     public static ImageButton btnCrop;
@@ -42,13 +70,35 @@ public class CropActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crop);
+        left_ll_crop = (LinearLayout) findViewById(R.id.left_ll_crop);
         ll_crop = (LinearLayout) findViewById(R.id.ll_crop);
+        right_ll_crop = (LinearLayout) findViewById(R.id.right_ll_crop);
+        top_ll_crop = (LinearLayout) findViewById(R.id.top_ll_crop);
+        bottom_ll_crop = (LinearLayout) findViewById(R.id.bottom_ll_crop);
+        center_ll_crop = (LinearLayout) findViewById(R.id.center_ll_crop);
+
         GridView gridview = (GridView) findViewById(R.id.gv_shotlist);
         gridview.setAdapter(new CropActivity.ImageAdapter(this));
         gridview.setOnItemClickListener(gridviewOnItemClickListener);
 
         mMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
+
+        left_params = (LinearLayout.LayoutParams) left_ll_crop.getLayoutParams();
+        ll_crop_params = (LinearLayout.LayoutParams) ll_crop.getLayoutParams();
+        right_params = (LinearLayout.LayoutParams) right_ll_crop.getLayoutParams();
+        top_params = (LinearLayout.LayoutParams) top_ll_crop.getLayoutParams();
+        center_params = (LinearLayout.LayoutParams) center_ll_crop.getLayoutParams();
+        bottom_params = (LinearLayout.LayoutParams) bottom_ll_crop.getLayoutParams();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                first_window_width = ll_crop.getWidth();
+                first_window_height = ll_crop.getHeight();
+                Log.d("ll_crop 크기 확인", first_window_width + "/" + first_window_height);
+            }
+        }, 1000);
 
         btn_cancel = (ImageButton) findViewById(R.id.btn_cancel);
         btn_cancel.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +167,20 @@ public class CropActivity extends Activity {
                 tmp_view = arg1;
             }
             arg1.setBackgroundResource(R.drawable.image_border);
-            cropperDrawingView.setImageCrop(BitmapFactory.decodeFile(arg0.getAdapter().getItem(arg2).toString()), ll_crop.getWidth(), ll_crop.getHeight());
+            cropperDrawingView.setImageCrop(((BitmapDrawable) getResources().getDrawable(R.drawable.img_transparent)).getBitmap(), ll_crop.getWidth(), ll_crop.getHeight());
+            Bitmap selected_image = BitmapFactory.decodeFile(arg0.getAdapter().getItem(arg2).toString());
+
+            setSizeCropView(selected_image.getWidth(), selected_image.getHeight());
+            Log.d("이미지 크기 확인", selected_image.getWidth() + "/" + selected_image.getHeight());
+            tmp_arg0 = arg0;
+            tmp_arg2 = arg2;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d("ll_crop 크기 확인", ll_crop.getWidth() + "/" + ll_crop.getHeight());
+                    cropperDrawingView.setImageCrop(BitmapFactory.decodeFile(tmp_arg0.getAdapter().getItem(tmp_arg2).toString()), ll_crop.getWidth(), ll_crop.getHeight());
+                }
+            }, 100);
         }
     };
 
@@ -160,6 +223,87 @@ public class CropActivity extends Activity {
             imageView.setImageBitmap(myBitmap);
             return imageView;
         }
+    }
+
+    public void InitCropView() {
+        top_params.weight = 0f;
+        center_params.weight = 1000f;
+        bottom_params.weight = 0f;
+        left_params.weight = 0f;
+        ll_crop_params.weight = 1000f;
+        right_params.weight = 0f;
+        top_ll_crop.setLayoutParams(top_params);
+        center_ll_crop.setLayoutParams(center_params);
+        bottom_ll_crop.setLayoutParams(bottom_params);
+        left_ll_crop.setLayoutParams(left_params);
+        ll_crop.setLayoutParams(ll_crop_params);
+        right_ll_crop.setLayoutParams(right_params);
+    }
+
+    public void setSizeCropView(float image_width, float image_height) {
+        window_width = first_window_width;
+        window_height = first_window_height;
+        Log.d("화면 크기 확인", window_width + "/" + window_height);
+
+        float rate_image_width = 0;
+        float rate_image_height = 0;
+
+        float rate_diff = 0;
+
+        if (image_width >= image_height) { //가로가 길거나 같은 사진
+            rate_window_width = 1;
+            rate_window_height = window_height / window_width;
+
+            rate_image_width = 1;
+            rate_image_height = image_height / image_width;
+
+            rate_diff = rate_image_height / rate_window_height;
+
+            top_params.weight = 1000 * (1 - rate_diff) / 2f;
+            center_params.weight = 1000 - (1000 * (1 - rate_diff)) + 0f;
+            bottom_params.weight = 1000 * (1 - rate_diff) / 2f;
+
+            left_params.weight = 0f;
+            ll_crop_params.weight = 1000f;
+            right_params.weight = 0f;
+        } else //세로가 긴 사진
+        {
+            rate_window_width = 1;
+            rate_window_height = window_height / window_width;
+
+            rate_image_width = 1;
+            rate_image_height = image_height / image_width;
+
+            if (rate_window_height > rate_image_height) { //화면 높이 비율이 더 높은 경우
+                rate_diff = rate_image_height / rate_window_height;
+
+                top_params.weight = 1000 * (1 - rate_diff) / 2f;
+                center_params.weight = 1000 - (1000 * (1 - rate_diff)) + 0f;
+                bottom_params.weight = 1000 * (1 - rate_diff) / 2f;
+
+                left_params.weight = 0f;
+                ll_crop_params.weight = 1000f;
+                right_params.weight = 0f;
+            } else { //화면 높이 비율이 더 작은 경우
+                rate_diff = rate_window_height / rate_image_height;
+
+                top_params.weight = 0f;
+                center_params.weight = 1000f;
+                bottom_params.weight = 0f;
+
+                left_params.weight = 1000 * (1 - rate_diff) / 2f;
+                ll_crop_params.weight = 1000 - (1000 * (1 - rate_diff)) + 0f;
+                right_params.weight = 1000 * (1 - rate_diff) / 2f;
+            }
+        }
+
+        top_ll_crop.setLayoutParams(top_params);
+        center_ll_crop.setLayoutParams(center_params);
+        bottom_ll_crop.setLayoutParams(bottom_params);
+
+        left_ll_crop.setLayoutParams(left_params);
+        ll_crop.setLayoutParams(ll_crop_params);
+        right_ll_crop.setLayoutParams(right_params);
     }
 
     @Override

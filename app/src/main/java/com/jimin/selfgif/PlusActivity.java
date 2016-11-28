@@ -105,7 +105,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             @Override
             public void onClick(View v) {
                 turboImageView.removeSelectedObject();
-                btn_deletecropped.setBackgroundResource(R.drawable.btn_deletecropped_bef);
+                //btn_deletecropped.setBackgroundResource(R.drawable.btn_deletecropped_bef);
                 tmp_view.setBackgroundResource(R.drawable.image_basic_border);
             }
         });

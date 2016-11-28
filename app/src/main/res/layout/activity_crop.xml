@@ -87,23 +87,63 @@
         android:background="@android:color/black" />
 
     <LinearLayout
-        android:id="@+id/ll_crop"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="815"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:weightSum="1000">
+        <LinearLayout
+            android:id="@+id/top_ll_crop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:orientation="vertical"/>
 
-        <view
-            android:id="@+id/cropper_drawing_view"
-            class="com.maker.outlinecropperlib.Views.CropperDrawingView"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_weight="1000" />
+        <LinearLayout
+            android:id="@+id/center_ll_crop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1000"
+            android:orientation="horizontal"
+            android:weightSum="1000">
+
+            <LinearLayout
+                android:id="@+id/left_ll_crop"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:orientation="horizontal"/>
+
+            <LinearLayout
+                android:id="@+id/ll_crop"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1000">
+
+                <view
+                    android:id="@+id/cropper_drawing_view"
+                    class="com.maker.outlinecropperlib.Views.CropperDrawingView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/right_ll_crop"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:orientation="horizontal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_ll_crop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:orientation="vertical"/>
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
