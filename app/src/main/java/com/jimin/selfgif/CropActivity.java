@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -98,7 +100,7 @@ public class CropActivity extends Activity {
                 first_window_height = ll_crop.getHeight();
                 Log.d("ll_crop 크기 확인", first_window_width + "/" + first_window_height);
             }
-        }, 1000);
+        }, 100);
 
         btn_cancel = (ImageButton) findViewById(R.id.btn_cancel);
         btn_cancel.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +140,8 @@ public class CropActivity extends Activity {
                     public void run() {
                         pd.dismiss();
                         if (cropResultBitmap != null) {
-                            PathClass.crop_list.add(cropResultBitmap);
+                            Bitmap croppedBitmap = adjustOpacity(cropResultBitmap, 255);
+                            PathClass.crop_list.add(croppedBitmap);
                             btn_next2.setEnabled(true);
                         }
                     }
@@ -212,10 +215,10 @@ public class CropActivity extends Activity {
             if (convertView == null) {
                 imageView = new ImageView(mContext);
                 imageView.setLayoutParams(new GridView.LayoutParams(rowWidth, rowWidth));
-                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 imageView.setPadding(1, 1, 1, 1);
                 imageView.setBackgroundColor(Color.rgb(255, 255, 255));
-                //imageView.setBackgroundResource(R.drawable.image_basic_border);
+                imageView.setBackgroundResource(R.drawable.image_basic_border);
             } else {
                 imageView = (ImageView) convertView;
             }
@@ -225,19 +228,15 @@ public class CropActivity extends Activity {
         }
     }
 
-    public void InitCropView() {
-        top_params.weight = 0f;
-        center_params.weight = 1000f;
-        bottom_params.weight = 0f;
-        left_params.weight = 0f;
-        ll_crop_params.weight = 1000f;
-        right_params.weight = 0f;
-        top_ll_crop.setLayoutParams(top_params);
-        center_ll_crop.setLayoutParams(center_params);
-        bottom_ll_crop.setLayoutParams(bottom_params);
-        left_ll_crop.setLayoutParams(left_params);
-        ll_crop.setLayoutParams(ll_crop_params);
-        right_ll_crop.setLayoutParams(right_params);
+    private Bitmap adjustOpacity(Bitmap bitmap, int opacity)
+    {
+        Bitmap mutableBitmap = bitmap.isMutable()
+                ? bitmap
+                : bitmap.copy(Bitmap.Config.ARGB_8888, true);
+        Canvas canvas = new Canvas(mutableBitmap);
+        int colour = (opacity & 0xFF) << 24;
+        canvas.drawColor(colour, PorterDuff.Mode.DST_IN);
+        return mutableBitmap;
     }
 
     public void setSizeCropView(float image_width, float image_height) {

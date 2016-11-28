@@ -52,6 +52,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
     ImageButton btn_deletecropped;
     ImageButton btn_share;
     ImageButton btn_flip;
+    ImageButton btn_upper;
     Button btn_addfirst;
     Button btn_addsecond;
     ImageButton btn_addgif;
@@ -69,6 +70,8 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
     public ArrayList<Bitmap> bitmaps = new ArrayList<Bitmap>(); //Add your bitmaps from internal or external storage.
     DisplayMetrics mMetrics;
     Bitmap selected_cropped = PathClass.crop_list.get(0);
+
+    boolean isCropped_upper = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,11 +133,26 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             }
         });
 
+        btn_upper = (ImageButton) findViewById(R.id.btn_upper);
+        btn_upper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isCropped_upper) {
+                    iv_background.bringToFront();
+                    isCropped_upper = false;
+                } else {
+                    turboImageView.bringToFront();
+                    isCropped_upper = true;
+                }
+            }
+        });
+
         btn_addfirst = (Button) findViewById(R.id.btn_addfirst);
         btn_addfirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 iv_background.bringToFront();
+                isCropped_upper = false;
 
                 BitmapDrawable scene1 = (BitmapDrawable) getResources().getDrawable(PathClass.click_gifscene1);
                 Bitmap b_scene1 = scene1.getBitmap();
@@ -152,6 +170,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             @Override
             public void onClick(View v) {
                 iv_background.bringToFront();
+                isCropped_upper = false;
 
                 BitmapDrawable scene2 = (BitmapDrawable) getResources().getDrawable(PathClass.click_gifscene2);
                 Bitmap b_scene2 = scene2.getBitmap();
@@ -253,7 +272,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
             if (convertView == null) {
                 imageView = new ImageView(mContext);
                 imageView.setLayoutParams(new GridView.LayoutParams(rowWidth, rowWidth));
-                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 imageView.setPadding(1, 1, 1, 1);
                 imageView.setBackgroundColor(Color.rgb(255, 255, 255));
                 imageView.setBackgroundResource(R.drawable.image_basic_border);

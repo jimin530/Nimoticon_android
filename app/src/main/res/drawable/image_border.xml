@@ -4,11 +4,11 @@
         android:color="#000000" >
     </solid>
     <stroke
-        android:width="5dip"
+        android:width="3dip"
         android:color="#56c2ba" />
     <padding
-        android:bottom="13px"
-        android:left="13px"
-        android:right="13px"
-        android:top="13px" />
+        android:bottom="21px"
+        android:left="21px"
+        android:right="21px"
+        android:top="21px" />
 </shape>
