@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.jimin.selfgif.Camera.CameraViewActivity;
+import com.jimin.selfgif.Tutorials.Tutorial2Activity;
 import com.maker.outlinecropperlib.Interfaces.CropperCallback;
 import com.maker.outlinecropperlib.OutlineCropper;
 import com.maker.outlinecropperlib.Views.CropperDrawingView;
@@ -65,6 +66,7 @@ public class CropActivity extends Activity {
     ImageButton btn_cancel;
     ImageButton btn_next2;
     public static ImageButton btnCrop;
+    ImageButton btn_inform2;
 
     View tmp_view = null;
 
@@ -121,6 +123,14 @@ public class CropActivity extends Activity {
             }
         });
         btn_next2.setEnabled(false);
+
+        btn_inform2 = (ImageButton) findViewById(R.id.btn_inform2);
+        btn_inform2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Tutorial2Activity.class));
+            }
+        });
 
         pd = new ProgressDialog(this);
         pd.setMessage("Cutting..");
@@ -228,8 +238,7 @@ public class CropActivity extends Activity {
         }
     }
 
-    private Bitmap adjustOpacity(Bitmap bitmap, int opacity)
-    {
+    private Bitmap adjustOpacity(Bitmap bitmap, int opacity) {
         Bitmap mutableBitmap = bitmap.isMutable()
                 ? bitmap
                 : bitmap.copy(Bitmap.Config.ARGB_8888, true);

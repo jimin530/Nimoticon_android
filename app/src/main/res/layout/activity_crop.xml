@@ -22,7 +22,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="60" />
+            android:layout_weight="30" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -43,7 +43,27 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="625" />
+            android:layout_weight="30" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80">
+            <ImageButton
+                android:id="@+id/btn_inform2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/btn_inform" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="545" />
 
         <LinearLayout
             android:layout_width="0dp"

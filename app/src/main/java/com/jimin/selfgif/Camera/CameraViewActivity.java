@@ -27,6 +27,7 @@ import com.jimin.selfgif.R;
 import com.jimin.selfgif.SelectGifActivity;
 import com.jimin.selfgif.SelectItemActivity;
 import com.jimin.selfgif.SelectPhotoActivity;
+import com.jimin.selfgif.Tutorials.Tutorial1Activity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -49,6 +50,7 @@ public class CameraViewActivity extends Activity implements OnClickListener {
     ImageButton btn_album;
     ImageButton btn_storage;
     ImageButton btn_next1;
+    ImageButton btn_inform1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +96,14 @@ public class CameraViewActivity extends Activity implements OnClickListener {
             }
         });
         btn_next1.setEnabled(false);
+
+        btn_inform1 = (ImageButton) findViewById(R.id.btn_inform1);
+        btn_inform1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Tutorial1Activity.class));
+            }
+        });
 
         mPreviewContainer = (FrameLayout) findViewById(R.id.camera_preview);
 

@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import com.jimin.selfgif.Camera.CameraViewActivity;
 import com.jimin.selfgif.SaveGif.AnimatedGifMaker;
+import com.jimin.selfgif.Tutorials.Tutorial3Activity;
 import com.munon.turboimageview.MultiTouchObject;
 import com.munon.turboimageview.TurboImageView;
 import com.munon.turboimageview.TurboImageViewListener;
@@ -58,6 +59,7 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
     ImageButton btn_addgif;
     ImageButton btn_send;
     ImageButton btn_selectemoticon;
+    ImageButton btn_inform3;
 
     FrameLayout fl_first;
     FrameLayout fl_second;
@@ -216,6 +218,14 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 PathClass.fromcamera = false;
                 Intent i = new Intent(getApplicationContext(), SelectItemActivity.class);
                 startActivity(i);
+            }
+        });
+
+        btn_inform3 = (ImageButton) findViewById(R.id.btn_inform3);
+        btn_inform3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Tutorial3Activity.class));
             }
         });
     }
