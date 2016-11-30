@@ -35,16 +35,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="45">
+                    android:layout_weight="100">
                     <ImageButton
                         android:id="@+id/btn_inform3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@drawable/btn_inform" />
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/btn_inform3" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -132,7 +132,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="360" />
+                    android:layout_weight="305" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -149,7 +149,8 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_addcropped"
-                        android:ellipsize="middle" />
+                        android:ellipsize="middle"
+                        android:visibility="invisible"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -172,7 +173,8 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_deletecropped"
-                        android:ellipsize="middle" />
+                        android:ellipsize="middle"
+                        android:visibility="invisible"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -398,10 +400,10 @@
                     android:id="@+id/btn_upper"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="3dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_upper"
                     android:ellipsize="middle" />

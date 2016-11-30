@@ -44,8 +44,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static java.lang.System.out;
-
 
 public class PlusActivity extends Activity implements TurboImageViewListener {
 
@@ -239,9 +237,10 @@ public class PlusActivity extends Activity implements TurboImageViewListener {
                 tmp_view.setBackgroundResource(R.drawable.image_basic_border);
                 tmp_view = arg1;
             }
+            turboImageView.removeAllObjects();
             arg1.setBackgroundResource(R.drawable.image_border2);
             selected_cropped = (Bitmap) arg0.getAdapter().getItem(arg2);
-
+            turboImageView.addObject(PlusActivity.this, selected_cropped);
             /*btn_addcropped.setBackgroundResource(R.drawable.btn_addcropped);
             btn_deletecropped.setBackgroundResource(R.drawable.btn_deletecropped_bef);*/
         }

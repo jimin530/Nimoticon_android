@@ -49,7 +49,7 @@ public class SelectItemActivity extends Activity {
     private GridView.OnItemClickListener gridviewOnItemClickListener = new GridView.OnItemClickListener() {
 
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-            PathClass.click_gifresource = getApplicationContext().getResources().getIdentifier(arg0.getAdapter().getItem(arg2)+"", "drawable", getApplicationContext().getPackageName());
+            PathClass.click_gifresource = getApplicationContext().getResources().getIdentifier(arg0.getAdapter().getItem(arg2) + "", "drawable", getApplicationContext().getPackageName());
             PathClass.click_gifnumber = PathClass.click_gifresource - PathClass.first_resource_number + 1;
             //arg1.setBackgroundColor(getResources().getColor(R.color.md_material_blue_600));
             startActivity(new Intent(getApplicationContext(), PopupGifActivity.class));
@@ -232,7 +232,7 @@ public class SelectItemActivity extends Activity {
         }
 
         public Bitmap decodeSampledBitmapFromResource(Resources res,
-                                                             int resId, int reqWidth, int reqHeight) {
+                                                      int resId, int reqWidth, int reqHeight) {
 
             // First decode with inJustDecodeBounds=true to check dimensions
             final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -249,7 +249,7 @@ public class SelectItemActivity extends Activity {
         }
 
         public int calculateInSampleSize(BitmapFactory.Options options,
-                                                int reqWidth, int reqHeight) {
+                                         int reqWidth, int reqHeight) {
             // Raw height and width of image
             final int height = options.outHeight;
             final int width = options.outWidth;
@@ -275,21 +275,72 @@ public class SelectItemActivity extends Activity {
 
     }
 
-    public void insert_Item()
-    {
-        items.add("gifimage_001"); items.add("gifimage_002"); items.add("gifimage_003"); items.add("gifimage_004"); items.add("gifimage_005");
-        items.add("gifimage_006"); items.add("gifimage_007"); items.add("gifimage_008"); items.add("gifimage_009"); items.add("gifimage_010");
-        items.add("gifimage_011"); items.add("gifimage_012"); items.add("gifimage_013"); items.add("gifimage_014"); items.add("gifimage_015");
-        items.add("gifimage_016"); items.add("gifimage_017"); items.add("gifimage_018"); items.add("gifimage_019"); items.add("gifimage_020");
-        items.add("gifimage_021"); items.add("gifimage_022"); items.add("gifimage_023"); items.add("gifimage_024"); items.add("gifimage_025");
-        items.add("gifimage_026"); items.add("gifimage_027"); items.add("gifimage_028"); items.add("gifimage_029"); items.add("gifimage_030");
-        items.add("gifimage_031"); items.add("gifimage_032"); items.add("gifimage_033"); items.add("gifimage_034"); items.add("gifimage_035");
-        items.add("gifimage_036"); items.add("gifimage_037"); items.add("gifimage_038"); items.add("gifimage_039"); items.add("gifimage_040");
-        items.add("gifimage_041"); items.add("gifimage_042"); items.add("gifimage_043"); items.add("gifimage_044"); items.add("gifimage_045");
-        items.add("gifimage_046"); items.add("gifimage_047"); items.add("gifimage_048"); items.add("gifimage_049"); items.add("gifimage_050");
-        items.add("gifimage_051"); items.add("gifimage_052"); items.add("gifimage_053"); items.add("gifimage_054"); items.add("gifimage_055");
-        items.add("gifimage_056"); items.add("gifimage_057"); items.add("gifimage_058"); items.add("gifimage_059"); items.add("gifimage_060");
-        items.add("gifimage_061"); items.add("gifimage_062"); items.add("gifimage_063"); items.add("gifimage_064"); items.add("gifimage_065");
+    public void insert_Item() {
+        items.add("gifimage_001");
+        items.add("gifimage_002");
+        items.add("gifimage_003");
+        items.add("gifimage_004");
+        items.add("gifimage_005");
+        items.add("gifimage_006");
+        items.add("gifimage_007");
+        items.add("gifimage_008");
+        items.add("gifimage_009");
+        items.add("gifimage_010");
+        items.add("gifimage_011");
+        items.add("gifimage_012");
+        items.add("gifimage_013");
+        items.add("gifimage_014");
+        items.add("gifimage_015");
+        items.add("gifimage_016");
+        items.add("gifimage_017");
+        items.add("gifimage_018");
+        items.add("gifimage_019");
+        items.add("gifimage_020");
+        items.add("gifimage_021");
+        items.add("gifimage_022");
+        items.add("gifimage_023");
+        items.add("gifimage_024");
+        items.add("gifimage_025");
+        items.add("gifimage_026");
+        items.add("gifimage_027");
+        items.add("gifimage_028");
+        items.add("gifimage_029");
+        items.add("gifimage_030");
+        items.add("gifimage_031");
+        items.add("gifimage_032");
+        items.add("gifimage_033");
+        items.add("gifimage_034");
+        items.add("gifimage_035");
+        items.add("gifimage_036");
+        items.add("gifimage_037");
+        items.add("gifimage_038");
+        items.add("gifimage_039");
+        items.add("gifimage_040");
+        items.add("gifimage_041");
+        items.add("gifimage_042");
+        items.add("gifimage_043");
+        items.add("gifimage_044");
+        items.add("gifimage_045");
+        items.add("gifimage_046");
+        items.add("gifimage_047");
+        items.add("gifimage_048");
+        items.add("gifimage_049");
+        items.add("gifimage_050");
+        items.add("gifimage_051");
+        items.add("gifimage_052");
+        items.add("gifimage_053");
+        items.add("gifimage_054");
+        items.add("gifimage_055");
+        items.add("gifimage_056");
+        items.add("gifimage_057");
+        items.add("gifimage_058");
+        items.add("gifimage_059");
+        items.add("gifimage_060");
+        items.add("gifimage_061");
+        items.add("gifimage_062");
+        items.add("gifimage_063");
+        items.add("gifimage_064");
+        items.add("gifimage_065");
         items.add("gifimage_066");
         /*for (int p = 0; p <= 9; p++) {
             items.add("gifimage_00"+p);

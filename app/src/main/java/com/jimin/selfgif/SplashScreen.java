@@ -24,9 +24,7 @@ public class SplashScreen extends Activity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             request_camera();
-        }
-        else
-        {
+        } else {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

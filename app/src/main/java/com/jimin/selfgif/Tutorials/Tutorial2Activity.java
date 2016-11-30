@@ -2,7 +2,6 @@ package com.jimin.selfgif.Tutorials;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;

@@ -85,15 +85,15 @@
 
         <activity
             android:name=".Tutorials.Tutorial1Activity"
-            android:theme="@android:style/Theme.Translucent" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 
         <activity
             android:name=".Tutorials.Tutorial2Activity"
-            android:theme="@android:style/Theme.Translucent" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 
         <activity
             android:name=".Tutorials.Tutorial3Activity"
-            android:theme="@android:style/Theme.Translucent" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 
     </application>
 
