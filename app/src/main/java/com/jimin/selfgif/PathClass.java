@@ -17,7 +17,7 @@ public class PathClass {
     public static int click_gifscene2;
     public static int click_gifnumber;
     public static int first_resource_number = R.drawable.gifimage_001;
-    public static int first_scene_number = R.drawable.gifimagescene_001_1;
+    public static int first_scene_number = R.drawable.gifimagescene_001_01;
     public static String click_makegifroot;
     public static String basicroot = Environment.getExternalStorageDirectory().toString() + "/Nimoticon/";
     public static String basicsavegifroot = Environment.getExternalStorageDirectory().toString() + "/Nimoticon/NimoticonGif/";
@@ -34,7 +34,7 @@ public class PathClass {
 
     public static void clearValue() {
         first_resource_number = R.drawable.gifimage_001;
-        first_scene_number = R.drawable.gifimagescene_001_1;
+        first_scene_number = R.drawable.gifimagescene_001_01;
         PathClass.take_photoroot.clear();
         PathClass.crop_list.clear();
         PathClass.finish_list.clear();

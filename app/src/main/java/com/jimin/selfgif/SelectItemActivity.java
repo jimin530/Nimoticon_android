@@ -342,6 +342,7 @@ public class SelectItemActivity extends Activity {
         items.add("gifimage_064");
         items.add("gifimage_065");
         items.add("gifimage_066");
+        items.add("gifimage_067");
         /*for (int p = 0; p <= 9; p++) {
             items.add("gifimage_00"+p);
         }
